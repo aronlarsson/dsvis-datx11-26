@@ -16,7 +16,7 @@ describe("Index.html", () => {
     });
 });
 
-describe("General controls", () => {
+describe("General controls and information", () => {
     it("Node size and animation speed does not have empty values", () => {
         cy.checkForAllPages(() => {
             cy.checkForAllAlgorithms(() => {
@@ -29,8 +29,7 @@ describe("General controls", () => {
     it("Selecting different node sizes should work", () => {
         cy.checkForAllPages(() => {
             cy.checkForAllAlgorithms(() => {
-                const nodeSizes = ["tiny", "small", "medium", "large", "huge"]
-                cy.log("WHat")
+                const nodeSizes = ["Tiny", "Small", "Medium", "Large", "Huge"]
                 for (let size of nodeSizes) {
                     cy.get(".objectSize").select(size)
                     cy.get(".objectSize").find(":selected").should("contain.text", size)
@@ -38,5 +37,5 @@ describe("General controls", () => {
                     
             })
         })
-    })
+    });
 });
