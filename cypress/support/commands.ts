@@ -51,7 +51,11 @@ Cypress.Commands.add("checkForAllAlgorithms", (check: () => void) => {
         algorithmSelector.find("option").each(function () {
             expect(this.ownerDocument.defaultView).to.not.be.undefined;
             // Test fails if anchorElement.ownerDocument.defaultView is undefined, hence not null assertion
-            if (this instanceof this.ownerDocument.defaultView!.HTMLOptionElement) {
+            if (
+                this instanceof
+                    this.ownerDocument.defaultView!.HTMLOptionElement &&
+                !this.disabled
+            ) {
                 cy.selectAlgorithm(this.value);
                 check();
             }
