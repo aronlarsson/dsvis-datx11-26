@@ -38,4 +38,33 @@ describe("General controls and information", () => {
             })
         })
     });
+
+    it("Canvas should contain information text on load", () => {
+        cy.checkForAllPages(() => {
+            cy.checkForAllAlgorithms(() => {
+                cy.get("svg")
+                    .first()
+                    .children()
+                    .filter("text")
+                    .then((texts) => {
+                        cy.wrap(texts.filter(".message")).should(
+                            "have.text",
+                            "\u00A0"
+                        );
+                        cy.wrap(texts.filter(".title")).should(
+                            "have.text",
+                            "Select an action from the menu above"
+                        );
+                        cy.wrap(texts.filter(".printer")).should(
+                            "have.text",
+                            "\u00A0"
+                        );
+                        cy.wrap(texts.filter(".status-report")).should(
+                            "have.text",
+                            "Idle"
+                        );
+                    });
+            });
+        });
+    });
 });
