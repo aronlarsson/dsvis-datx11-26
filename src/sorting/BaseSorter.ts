@@ -3,6 +3,7 @@ import { DSArray } from "~/objects/dsarray";
 import { StapleArray } from "~/objects/staple-array";
 import { TextCircle } from "~/objects/text-circle";
 import { Sorter } from "~/sorting";
+import { generateShuffledArray } from "~/helpers";
 
 export const SortMessages = {
     general: {
@@ -109,36 +110,7 @@ export class BaseSorter extends Engine implements Sorter {
     generateShuffledArray(shuffleType: string): number[] {
         // Get the current array values
         const currentValues = this.sortArray.getValues();
-        const arrayCopy = [...currentValues];
-
-        if (shuffleType === "shuffleRandom") {
-            // Fisher-Yates shuffle
-            for (let i = arrayCopy.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
-            }
-        } else if (shuffleType === "shuffleReversed") {
-            // Reverse the array
-            arrayCopy.reverse();
-        } else if (shuffleType === "shuffleReversedSorted") {
-            // Reverse sorted (descending order)
-            arrayCopy.sort((a, b) => b - a);
-        } else if (shuffleType === "shuffle70Percent") {
-            // Sort first 70% of array, shuffle the rest
-            const splitIndex = Math.ceil(arrayCopy.length * 0.7);
-            const firstPart = arrayCopy.slice(0, splitIndex).sort((a, b) => a - b);
-            const secondPart = arrayCopy.slice(splitIndex);
-            
-            // Shuffle the second part (Fisher-Yates)
-            for (let i = secondPart.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [secondPart[i], secondPart[j]] = [secondPart[j], secondPart[i]];
-            }
-            
-            return [...firstPart, ...secondPart];
-        }
-
-        return arrayCopy;
+        return generateShuffledArray(currentValues, shuffleType);
     }
 
     getObjectSize(): number {

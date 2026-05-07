@@ -3,12 +3,16 @@ import { BinaryDir, BinaryNode } from "~/objects/binary-node";
 import { DSArray } from "~/objects/dsarray";
 import { TextCircle } from "~/objects/text-circle";
 import { Sorter } from "~/sorting";
+import { generateShuffledArray } from "~/helpers";
 
 export const SortMessages = {
     general: {
         empty: "Array is empty!",
         full: "Array is full!",
         finished: "Finished",
+    },
+    insert: {
+        value: (value: string) => `Insert value: ${value}`,
     },
     sort: {
         compare: (a: string, b: string) => `Compare ${a} and ${b}`,
@@ -18,7 +22,8 @@ export const SortMessages = {
 
 export class TreeSorter extends Engine implements Sorter {
 
-    initialValues: number[] = [];
+    initialValues: (number | string)[] = [];
+    baseInitialValues: (number | string)[] = [];
     
     treeRoot: BinaryNode | null = null;
     treeNodes: Array<BinaryNode | null> = [];
@@ -30,13 +35,25 @@ export class TreeSorter extends Engine implements Sorter {
         super(containerSelector);
     }
 
-    initialise(initialValues: number[] = []) {
-        this.initialValues = initialValues;
+    initialise(initialValues: (number | string)[] = []) {
+        this.baseInitialValues = [...initialValues];
+        this.initialValues = [...initialValues];
         super.initialise();
     }
 
     async resetAlgorithm() {
         await super.resetAlgorithm();
+        
+        // Clean up old tree nodes from SVG
+        for (const node of this.treeNodes) {
+            if (node) {
+                node.remove();
+            }
+        }
+        
+        // Reset to base values when clearing
+        this.initialValues = [...this.baseInitialValues];
+        
         this.treeRoot = null;
         const arraySize = this.initialValues.length;
         this.treeNodes = new Array(arraySize).fill(null);
@@ -53,11 +70,17 @@ export class TreeSorter extends Engine implements Sorter {
         // Initialize array with input values
         for (let i = 0; i < this.initialValues.length; i++) {
             const value = String(this.initialValues[i]);
-            const node = this.Svg.put(
-                new BinaryNode(value, this.getObjectSize(), this.getStrokeWidth())
-            ).init(...this.getNodeStart());
+            
+            // Only create node if it doesn't already exist (from insert)
+            if (!this.treeNodes[i]) {
+                const node = this.Svg.put(
+                    new BinaryNode(value, this.getObjectSize(), this.getStrokeWidth())
+                ).init(...this.getNodeStart());
 
-            this.treeNodes[i] = node;
+                this.treeNodes[i] = node;
+            }
+            
+            const node = this.treeNodes[i]!;
             if (i === 0) {
                 this.treeRoot = node;
             } else {
@@ -196,11 +219,64 @@ export class TreeSorter extends Engine implements Sorter {
     }
 
     async insert(...values: Array<number | string>) {
-        // Insert values into the tree (for subclasses to implement)
+        for (const value of values) {
+            const currentLength = this.initialValues.length;
+            
+            if (!this.sortArray) {
+                await this.pause("general.full");
+                return;
+            }
+
+            // If array is full, expand it by the exact number needed
+            if (currentLength >= this.sortArray.getSize()) {
+                const newSize = currentLength + 1;
+                this.sortArray.setSize(newSize);
+                // Extend treeNodes array while preserving existing nodes
+                while (this.treeNodes.length < newSize) {
+                    this.treeNodes.push(null);
+                }
+            }
+
+            // Add to initial values
+            this.initialValues.push(value);
+            
+            // Create tree node for this value
+            const valueStr = String(value);
+            const newIndex = currentLength;
+            
+            const node = this.Svg.put(
+                new BinaryNode(valueStr, this.getObjectSize(), this.getStrokeWidth())
+            ).init(...this.getNodeStart());
+
+            this.treeNodes[newIndex] = node;
+
+            // Set up parent connection if not root
+            if (newIndex > 0) {
+                const parentIdx = Math.floor((newIndex - 1) / 2);
+                const parentNode = this.treeNodes[parentIdx];
+                if (parentNode) {
+                    const direction: BinaryDir = newIndex === 2 * parentIdx + 1 ? "left" : "right";
+                    parentNode.setChild(direction, node, this.getStrokeWidth());
+                }
+            } else {
+                this.treeRoot = node;
+            }
+            
+            // Update array visualization
+            this.sortArray.setValue(newIndex, valueStr);
+            this.sortArray.setDisabled(newIndex, false);
+
+            await this.pause("insert.value", valueStr);
+            
+            // Resize tree to show new node
+            this.resizeTree();
+        }
     }
 
-    async unsort() {
-        // Unsort the tree (for subclasses to implement)
+    generateShuffledArray(shuffleType: string): number[] {
+        // Get the current array values
+        const currentValues = this.getValues();
+        return generateShuffledArray(currentValues, shuffleType);
     }
 
     getObjectSize(): number {
