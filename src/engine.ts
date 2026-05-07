@@ -104,6 +104,7 @@ export class Engine implements PannableAndZoomable {
     // Inititalisation
 
     constructor(containerSelector: string) {
+        
         this.debugger = new Debugger();
         this.state = new State();
 
@@ -532,5 +533,4 @@ export class Engine implements PannableAndZoomable {
             return elem;
         }
     }
-
 }

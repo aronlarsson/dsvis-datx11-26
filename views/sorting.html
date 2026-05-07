@@ -5,16 +5,15 @@
   <meta charset="utf-8" />
 </head>
 
-<header>
-  <h1><a href="index.html">Visualizations of data structures and algorithms</a></h1>
-</header>
+<body>
+  <header class="site-header"></header>
 
-<main>
-  <section id="sortingContainer">
+  <main class="main-shell d-flex align-items-start">
+    <section id="sortingContainer" class="page-content mx-auto py-4 px-3 px-md-4 text-center">
 
-    <label for="algorithmSelector">Choose a sorting algorithm:</label>
-    <h2 class="selectorWrapper">
-      <select name="algorithmSelector" class="algorithmSelector">
+    <label for="algorithmSelector" class="form-label fw-semibold d-block text-start">Choose a sorting algorithm:</label>
+    <div class="selectorWrapper mx-auto mb-3">
+      <select name="algorithmSelector" class="algorithmSelector form-select" id="algorithmSelector">
         <option disabled value="">&mdash; Please choose an algorithm &mdash;</option>
         <hr />
         <option value="SelectionSort">Selection sort</option>
@@ -25,7 +24,7 @@
         <option value="HeapSort">Heap sort</option>
         <option value="RadixSort">Radix sort</option>
       </select>
-    </h2>
+    </div>
 
     <fieldset class="algorithmControls">
       <span class="formgroup">
@@ -67,17 +66,17 @@
       <svg></svg>
     </div>
 
-    <fieldset class="generalControls">
-      <span class="formgroup">
-        <button class="fastBackward">&lt;&lt;</button>
-        <button class="stepBackward">&lt;</button>
-        <button class="toggleRunner">Run</button>
-        <button class="stepForward">&gt;</button>
-        <button class="fastForward">&gt;&gt;</button>
+    <fieldset class="generalControls canvas-controls-attached d-flex flex-wrap justify-content-start gap-2 text-start">
+      <span class="formgroup media-controls d-inline-flex flex-wrap align-items-center gap-2">
+        <button class="fastBackward btn btn-outline-light btn-sm media-btn" aria-label="Fast backward">⏮︎</button>
+        <button class="stepBackward btn btn-outline-light btn-sm media-btn" aria-label="Step backward">⏪︎</button>
+        <button class="toggleRunner btn btn-light btn-sm media-btn media-btn-run" aria-label="Run">Run</button>
+        <button class="stepForward btn btn-outline-light btn-sm media-btn" aria-label="Step forward">⏩︎</button>
+        <button class="fastForward btn btn-outline-light btn-sm media-btn" aria-label="Fast forward">⏭︎</button>
       </span>
-      <span class="formgroup">
+      <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
         <label>Speed:
-          <select class="animationSpeed">
+          <select class="animationSpeed form-select form-select-sm w-auto d-inline-block">
             <option value="1200">Slowest</option>
             <option value="700" selected>Slow</option>
             <option value="300">Fast</option>
@@ -100,15 +99,15 @@
         <button type="button" id="resetPanAndZoomButton">Reset pan and zoom</button>
       </span>
     </fieldset>
-
   </section>
-</main>
+  </main>
 
-<footer>
-  <p>&copy;2024 <a href="https://github.com/heatherleaf">Peter Ljunglöf</a>,
-    open source code <a href="https://github.com/ChalmersGU-data-structure-courses/dsvis">on GitHub</a></p>
-</footer>
-
+  <footer class="site-footer py-3">
+    <div class="container">
+      <p class="mb-0 text-center">&copy;2024 <a href="https://github.com/heatherleaf">Peter Ljunglöf</a>,
+        open source code <a href="https://github.com/ChalmersGU-data-structure-courses/dsvis">on GitHub</a></p>
+    </div>
+  </footer>
 </body>
 
 </html>

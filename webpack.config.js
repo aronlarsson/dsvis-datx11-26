@@ -22,11 +22,12 @@ const config = {
     // Important that entries are names the same as the html files in the views directory otherwise they won't add the js file to the html file
     // Everything added to globals will be added to all the html files in the views directory
     entry: {
-        globals: ["./dsvis.css"],
+        globals: ["./dsvis.css", "bootstrap/dist/js/bootstrap.bundle.min.js", "./views/shared/header.ts"],
         collections: "./src/collections.ts",
         prioqueues: "./src/prioqueues.ts",
         sorting: "./src/sorting.ts",
         "avl-quiz": "./src/quizzes/AVL-quiz.ts",
+        graph: "./src/graph.ts",
     },
     output: {
         path: path.resolve(__dirname, "public"),
@@ -63,6 +64,9 @@ const config = {
             {
                 test: /\.(ts|tsx)$/i,
                 loader: "ts-loader",
+                options: {
+                    transpileOnly: true,
+                },
                 exclude: ["/node_modules/"],
             },
             {

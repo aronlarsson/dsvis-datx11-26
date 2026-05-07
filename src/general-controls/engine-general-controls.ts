@@ -47,6 +47,9 @@ export class EngineGeneralControls {
     idleListeners: IdleListener[] = [];
     asyncListeners: AsyncListener[] = [];
 
+    static readonly RUN_SYMBOL = "▶︎";
+    static readonly PAUSE_SYMBOL = "⏸︎";
+
     constructor(container: HTMLElement, engine: Engine) {
         this.engine = engine;
         this.debugger = engine.debugger;
@@ -280,11 +283,22 @@ export class EngineGeneralControls {
         } else {
             classes.remove("selected");
         }
+        this.syncRunnerVisual(running);
         return this;
     }
 
     toggleRunner(): this {
         return this.setRunning(!this.isRunning());
+    }
+
+    syncRunnerVisual(running: boolean): void {
+        this.toggleRunnerButton.textContent = running
+            ? EngineGeneralControls.PAUSE_SYMBOL
+            : EngineGeneralControls.RUN_SYMBOL;
+        this.toggleRunnerButton.setAttribute(
+            "aria-label",
+            running ? "Pause" : "Run"
+        );
     }
 
     addRunnerListener() {

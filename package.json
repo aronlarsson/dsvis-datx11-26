@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.4",
+    "bootstrap": "^5.3.8",
     "dsvis": "file:"
   },
   "devDependencies": {
