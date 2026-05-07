@@ -38,7 +38,7 @@ export class EngineGeneralControls {
     fastForwardButton: HTMLButtonElement;
     animationSpeedSelect: HTMLSelectElement;
     objectSizeSelect: HTMLSelectElement;
-    resetPanningButton: HTMLButtonElement;
+    resetPanAndZoomButton: HTMLButtonElement;
 
     engine: Engine;
     debugger: Debugger;
@@ -84,8 +84,8 @@ export class EngineGeneralControls {
             "select.animationSpeed",
             container
         );
-        this.resetPanningButton = querySelector<HTMLButtonElement>(
-            "button#resetPanningButton",
+        this.resetPanAndZoomButton = querySelector<HTMLButtonElement>(
+            "button#resetPanAndZoomButton",
             container
         );
 
@@ -140,11 +140,11 @@ export class EngineGeneralControls {
                 },
             },
             {
-                element: this.resetPanningButton,
+                element: this.resetPanAndZoomButton,
                 type: "click",
                 condition: () => true,
                 handler: () => {
-                    this.engine.resetViewBoxPosition();
+                    this.engine.resetViewBox();
                 }
             }
         );
@@ -202,10 +202,10 @@ export class EngineGeneralControls {
                     reject({ until: this.engine.currentStep }),
             },
             {
-                element: this.resetPanningButton,
+                element: this.resetPanAndZoomButton,
                 type: "click",
                 handler: (resolve, reject) => {
-                    this.engine.resetViewBoxPosition();
+                    this.engine.resetViewBox();
                     resolve(undefined);
                 }
             }
