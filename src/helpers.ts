@@ -182,7 +182,7 @@ export function initialiseEngine<T extends Engine = Engine>(
     
     // Check if there's an array query parameter, otherwise use default
     const arrayParam = new URL(window.location.href).searchParams.get("array");
-    let initialValues: number[];
+    let initialValues: number[] = [];
     
     if (arrayParam) {
         // Parse the array from the query parameter (comma-separated values)
@@ -192,7 +192,7 @@ export function initialiseEngine<T extends Engine = Engine>(
             .filter(val => !isNaN(val));
     } else {
         // Use default initial values
-        initialValues = [32, 83, 22, 15, 8, 12, 43, 54, 23, 34, 76, 87, 32];
+        // initialValues = [32, 83, 22, 15, 8, 12, 43, 54, 23, 34, 76, 87, 32];
     }
     
     // Call initialise with parameters if it's a Sorter, otherwise without
