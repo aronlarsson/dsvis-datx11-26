@@ -44,7 +44,7 @@ if (!isBaseEngine) {
             engine.container,
             engine
         );
-    } else if (engine instanceof BaseSorter) {
+    } else  {
         engine.algorithmControls = new SortingAlgorithmControls(
             engine.container,
             engine
