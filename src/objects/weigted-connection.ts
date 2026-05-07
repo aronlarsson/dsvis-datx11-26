@@ -1,4 +1,4 @@
-import { Text } from "@svgdotjs/svg.js";
+import { G } from "@svgdotjs/svg.js";
 import { LinkedNode } from "./basic-structure-objects/linked-node";
 import { BTreeNode } from "./btree-node";
 import { Connection } from "./connection";
@@ -6,12 +6,39 @@ import { GraphNode } from "./graph-node";
 
 export class WeightedConnection<T extends GraphNode | BTreeNode | LinkedNode> extends Connection<T> {
     $weight: number
-    $textObj!: Text
+    $textObj: G = new G()
 
     constructor(start: T, end: T, weight: number) {
         super(start, end)
         
         this.$weight = weight
+    }
+
+    override setHighlight(high: boolean | null): this {
+        super.setHighlight(high)
+        this.$textObj.setHighlight(high)
+        return this
+    }
+
+    override setHighlightColor(
+        enabled: boolean
+      , cssClass?: string
+    ): void {
+        super.setHighlightColor(enabled, cssClass)
+
+        const highlightClasses = [
+            'highlight',
+            'highlight-blue',
+            'highlight-green'
+        ];
+        
+        highlightClasses.forEach(c => this.$textObj.removeClass(c));
+
+        if (enabled) {
+            const classToApply = cssClass ?? 'highlight';
+
+            this.$textObj.addClass(classToApply)
+        }
     }
 
     // for the overridden functions i only added _createWeight and _redrawWeight
@@ -46,34 +73,53 @@ export class WeightedConnection<T extends GraphNode | BTreeNode | LinkedNode> ex
         return this;
     }
 
-    // Creates a text object that contains the weight value
-    // of this connection
+    /**
+    * Creates a text object that contains the weight value
+    * of this connection
+    **/
     _createWeight(): void {
         const C = this.$coords
         var [offx, offy] = [0, 0]
         if (this.$bend > 0) {
             [offx, offy] = this._offset()
         }
-        this.$textObj = this.root()
-        .text(this.$weight.toString())
-        .font({ size: 25*this.$end.getSize()/40 })
-        .fill("#000000")
-        .stroke({ color: "#B32034", width: 2 })
-        .center(
-            (C.x1 + C.x2)/2 + (C.y1 - C.y2) * this.$bend - offx*17,
-            (C.y1 + C.y2)/2 + (C.x2 - C.x1) * this.$bend - offy*17
-        );
+
+        // Create a group for the text object
+        this.$textObj = this.engine().Svg.group()
+
+        // Create the text object
+        this.$textObj.text(this.$weight.toString())
+                     .font({ size: 20*this.$end.getSize()/40 })
+                     .center(
+                         (C.x1 + C.x2)/2 + (C.y1 - C.y2) * this.$bend - offx*10,
+                         (C.y1 + C.y2)/2 + (C.x2 - C.x1) * this.$bend - offy*10
+                     );
+
+        // Create a box to function as a background
+        const box = this.$textObj.bbox()
+        this.$textObj.rect(box.width + 5, box.height)
+                     .center(box.cx, box.cy)
+                     .radius(9)
+                     .back()
     }
 
-    // When update gets called this animates the text object
-    // so it stays in the middle of the connection
-    _redrawWeight(newCoords: Partial<{ x1: number; 
-                                       y1: number; 
-                                       x2: number; 
-                                       y2: number; 
-                                       r2: number; 
-                                    }>,
-                  animationDuration: number = 0): void {
+    /** 
+    * When update gets called this animates the text object
+    * so it stays in the middle of the connection
+    * 
+    * @param newCoords - If there are new coordinates we use them
+    * 
+    * @param animationDuration - Determines if it gets animated and how fast
+    **/
+    _redrawWeight(
+        newCoords: Partial<{ x1: number; 
+                             y1: number; 
+                             x2: number; 
+                             y2: number; 
+                             r2: number; 
+                          }>,
+        animationDuration: number = 0
+    ): void {
         const C = this.$coords
 
         const x1 = newCoords.x1 ? newCoords.x1 : C.x1
@@ -87,13 +133,26 @@ export class WeightedConnection<T extends GraphNode | BTreeNode | LinkedNode> ex
         }
 
         this.$textObj.font({ size: 25*this.$end.getSize()/40 })
-        this.$textObj.engine().animate(this.$textObj, animationDuration > 0)
-        .center(
-            (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*7,
-            (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*7
-        )
+        if (animationDuration > 0) {
+            this.$textObj.animate(animationDuration)
+                         .center(
+                             (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*10,
+                             (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*10
+                         )
+                        }
+        else {
+            this.$textObj.center(
+                             (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*10,
+                             (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*10
+                         )
+                        }
     }
 
+    /**
+     * Creates an offset that will be perpendicular to this edge
+     * 
+     * @returns [offset for x-level, offset for y-level]
+     */
     _offset(): [number, number] {
         const preX1 = (this.$coords.x2 - this.$coords.x1)
         const preY1 = (this.$coords.y2 - this.$coords.y1)

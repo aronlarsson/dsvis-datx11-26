@@ -388,12 +388,22 @@ circle, rect, polygon {
 	fill: var(--shape-fill);
 }
 
+.row-normal {
+	fill:white;
+	stroke:black;
+	fill-opacity:0.3
+}
 
-
-.edge-table rect {
-	fill: var(--edge-fill);
+.edge-table .cell {
+    fill: var(--edge-fill);
 	stroke: var(--edge-stroke);
     stroke-width: 1;
+}
+
+.row-highlight {
+	fill:rgb(247, 152, 152);
+	fill-opacity:0.3;
+	stroke: red;
 }
 
 path, line, polyline {
@@ -415,6 +425,7 @@ svg .marked.filled, svg text.marked, svg .marked > .filled, svg .marked > text {
 	fill: var(--marked);
 }
 
+
 svg .highlight, svg .highlight > * {
 	stroke: var(--highlight);
 }
@@ -424,12 +435,55 @@ svg .highlight.filled, svg text.highlight, svg .highlight > .filled, svg .highli
 	fill: var(--highlight);
 }
 
+svg .marked.highlight > * {
+	stroke:none;
+	fill:#C00
+}
+
+svg .highlight-blue, svg .highlight-blue > * {
+    stroke: blue;
+}
+
+svg .highlight-blue.filled, svg text.highlight-blue, svg .highlight-blue > .filled, svg .highlight-blue > text {
+	stroke: none;
+	fill: blue;
+}
+
+svg .marked.highlight-blue > * {
+	stroke:none;
+	fill:blue
+}
+
+svg .highlight-green, svg .highlight-green > * {
+    stroke: green;
+}
+
+svg .highlight-green.filled, svg text.highlight-green, svg .highlight-green > .filled, svg .highlight-green > text {
+	stroke: none;
+	fill: green;
+}
+
+svg .marked.highlight-green > * {
+	stroke:none;
+	fill:green
+}
+
 svg .nofill {
 	fill: none;
 }
 
 svg .highlight-circle {
 	stroke: var(--highlight);
+	fill: none;
+}
+
+svg .highlight-circle-green {
+	stroke: rgb(0, 204, 0);
+	fill: none;
+}
+
+svg .highlight-circle-blue {
+	stroke: rgb(0, 0, 204);
 	fill: none;
 }
 

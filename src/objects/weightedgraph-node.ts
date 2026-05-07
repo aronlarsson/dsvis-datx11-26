@@ -5,87 +5,85 @@ export class WeightedGraphNode extends GraphNode {
     $outgoing: Record<string, WeightedConnection<this> | null> = {};
     $incoming: Record<string, WeightedConnection<this> | null> = {};
     $weights: Record<string, number | null> = {};
+    $dir: boolean = true;
 
-
-    constructor(text: string, size: number, strokeWidth: number) {
-        super(text, size, strokeWidth);
+    override getDirected(): boolean {
+        return this.$dir
     }
 
-
-    // These are inhereted functions, nothing wrong with them
-    // but adding more variables to them seems to be a no-no
-    // so use connect instead
-    override setPredecessor(): never 
-     { throw new Error ("setPredecessor and setSuccessor are obsolete use connect for this class");}
-
-    override setSuccessor(): never 
-     { throw new Error ("setPredecessor and setSuccessor are obsolete use connect for this class")}
-
-    // connect has pretty much the exact structure of setSuccessor
-    // but i added so it checks dir in the beginning and puts
-    // weight in at the end
-    // dir = from creates theirKey ----> ourKey
-    // dir = to creates   theirKey <---- ourKey
-    // dir = both creates theirKey <---> ourKey
-    connect(
-        theirKey: string,
-        ourKey: string,
-        theirNode: this | null,
-        strokeWidth: number,
-        weight: number,
-        dir: string
+    override setPredecessor(
+        inKey: string
+      , outKey: string
+      , predecessor: this
+      , strokeWidth: number
+      , weight: number = 0
     ): this {
-        if (dir === "from" && theirNode) {
-            theirNode.connect(ourKey, theirKey, this, strokeWidth, weight, "to")
-            return this
-        } else if (dir === "both" && theirNode) {
-            theirNode.connect(ourKey, theirKey, this, strokeWidth, weight, "to")
-        } else if (dir !== "to") {
-            throw new Error ("connect only has the directions to, from and both defined")
-        }
-        const outEdge = this.$outgoing[theirKey];
-        
+        // Overriden so it accounts for weight
+        predecessor.setSuccessor(outKey, inKey, this, strokeWidth, weight);
+        return this;
+    }
+
+    override setSuccessor(
+        outKey: string
+      , inKey: string
+      , successor: this | null
+      , strokeWidth: number
+      , weight: number = 0
+    ): this {
+        const outEdge = this.$outgoing[outKey];
+
         if (outEdge) {
             const oldSuccessor = outEdge.getEnd();
             const oldIncoming = oldSuccessor.$incoming;
             for (const k in oldIncoming) {
                 if (oldIncoming[k] === outEdge) {
+                    // Added to remove the text object
+                    oldIncoming[k].$textObj.remove();
                     delete oldIncoming[k];
                 }
             }
             outEdge.remove();
         }
-        if (theirNode) {
-            const inEdge = theirNode.$incoming[ourKey];
+        if (successor) {
+            const inEdge = successor.$incoming[inKey];
             if (inEdge) {
                 const oldPredecessor = inEdge.getStart();
                 const oldOutgoing = oldPredecessor.$outgoing;
                 for (const k in oldOutgoing) {
                     if (oldOutgoing[k] === inEdge) {
+                        // Added to remove the text object
+                        oldOutgoing[k].$textObj.remove();
                         delete oldOutgoing[k];
                     }
                 }
                 inEdge.remove();
             }
+
+            // Added to differensiate between undirected edges and
+            // two different edges that lead from and to
             var bend = 0
-            if(theirNode.$outgoing[ourKey] && theirNode.$outgoing[ourKey].$weight != weight) {
+            if(successor.$outgoing[inKey] && successor.$weights[inKey] != weight) {
                 bend = 0.2
-                theirNode.$outgoing[ourKey].$bend = bend
-                theirNode.$outgoing[ourKey].update(theirNode.$outgoing[ourKey].$coords)
+                successor.$outgoing[inKey].$bend = bend
+                successor.$outgoing[inKey].update(successor.$outgoing[inKey].$coords)
             }
-            const edge = this.root()
-                .put(new WeightedConnection(this, theirNode, weight))
+
+            const edge = this.engine().Svg
+                .put(new WeightedConnection(this, successor, weight))
                 .init(
                     strokeWidth,
-                    this.getBend(theirKey) + bend,
-                    this.getDirected(theirKey)
+                    this.getBend(outKey) + bend,
+                    this.getDirected()
                 );
 
-            this.$outgoing[theirKey] = edge;
-            this.$weights[theirKey] = weight
-            theirNode.$incoming[ourKey] = edge;
+            this.$outgoing[outKey] = edge;
+            // Added to update weights
+            this.$weights[outKey] = weight;
+            successor.$incoming[inKey] = edge;
         } else {
-            delete this.$outgoing[theirKey];
+            // Added to remove the text object
+            this.$outgoing[outKey]?.$textObj.remove();
+            delete this.$outgoing[outKey];
         }
         this._updateNullary();
         return this;

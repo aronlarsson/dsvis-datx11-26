@@ -15,9 +15,33 @@ export class TextCircle extends G {
         this.$circle.center(0, 0);
         this.$text.center(0, 0);
         this.center(x, y);
-
+        
         return this;
     }
+
+    
+   /**
+    * 
+    * @param cssClass name of a defined css class
+    * @param enabled 
+    */
+
+    setHighlightColor(enabled: boolean,cssClass?: string, ) {
+    const highlightClasses = [
+        'highlight',
+        'highlight-blue',
+        'highlight-green'
+    ]
+
+    highlightClasses.forEach(c => this.removeClass(c))
+
+    if (enabled && cssClass) {
+        this.addClass(cssClass)
+    }
+
+    
+}
+
 
     getText(): string {
         return this.$text.text();

@@ -10,15 +10,18 @@
 
   <main class="main-shell d-flex align-items-start">
     <section id="graphContainer" class="page-content mx-auto py-4 px-3 px-md-4 text-center">
-      <h2 class="h5">Currently unfinished testing environ for graphs</h2>
       <label for="algorithmSelector" class="form-label fw-semibold d-block text-start">Choose a graph algorith:</label>
       <div class="selectorWrapper mx-auto mb-3">
         <select name="algorithmSelector" class="algorithmSelector form-select" id="algorithmSelector">
           <option disabled value="">
-            &mdash; Please choose a data structure &mdash;
+            &mdash; Please choose a graph algorithm &mdash;
           </option>
           <hr />
           <option value="Depth">Depth-first-search</option>
+          <option value="Breadth">Breadth-first-search</option>
+          <option value="FloydWarshall">Floyd-Warshall-search</option>
+          <option value="Dijkstras_algorithm">Dijkstra's algorithm</option>
+          <option value="Prim">Prim's MST</option>
         </select>
       </div>
       
@@ -26,16 +29,28 @@
         <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
           <select class="chooseGraphI disableWhenRunning form-select form-select-sm w-auto">
             <option value="" selected>Choose a graph</option>
-            <option value="Directed">Directed graph</option>
-            <option value="Undirected">Undirected graph</option>
-            
-            <option value="Mixed">Directed/Undirected graph</option>
+            <option value="Simple">Simple graph</option>
+            <option value="Simple_2">Simple graph 2</option>
+            <option value="Cyclic">Cyclic graph</option>
+            <option value="aCyclic">aCyclic graph</option>
+            <option value="DAG">DAG</option>
+            <option value="Weakly">Weakly connected graph</option>
+            <option value="Strongly">Strongly connected graph</option>
+            <option value="Eulerian">Eulerian graph</option>
+            <option value="Hamiltonian">Hamiltonian graph</option>
+            <option value="Chordal">Chordal graph</option>
             <option value="Tree">Tree graph</option>
           </select>
           <input class="chosengraph disableWhenRunning" type="hidden">
           <label class="d-inline-flex align-items-center gap-2">Start:
-            <input class="start disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="start" />
+            <input class="runningAlgorithm disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Run algorithm" />
           </label>
+          <span class="formgroup">
+            <label class="d-inline-flex align-items-center gap-2">Pick starting node:
+            <input class="insertNode disableWhenRunning btn btn-outline-light btn-sm" type="text" size="1" maxlength="20" />
+              <input class="startNode disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Pick" />
+            </label>
+          </span>
         </span>
       </fieldset>
 
@@ -74,6 +89,9 @@
             </select>
           </label>
         </span>
+      <span class="formgroup">
+        <button type="button" id="resetPanningButton">Reset panning</button>
+      </span>
       </fieldset>
     </section>
   </main>

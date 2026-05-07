@@ -1,13 +1,13 @@
 import { Graph } from "~/graph";
 import { EngineAlgorithmControl } from "./engine-algorithm-controls";
-import { querySelector } from "~/helpers";
+import { addReturnSubmit, querySelector } from "~/helpers";
 
 
 export class GraphAlgorithmControl extends EngineAlgorithmControl {
-    start: HTMLInputElement;
-    chosenGraph: HTMLInputElement; //name of element will be displayed as a message
-                                   //uppercase letters will hava a space like
-                                   //Chosen Graph will be displayed
+    runningAlgorithm: HTMLInputElement;
+    chosenGraph: HTMLInputElement;
+    insertNode: HTMLInputElement;
+    startNode: HTMLInputElement;
     chooseGraphI: HTMLSelectElement;
     engine: Graph;
     
@@ -26,25 +26,41 @@ export class GraphAlgorithmControl extends EngineAlgorithmControl {
             container
         );
 
-        this.start = querySelector<HTMLInputElement> (
-            "input.start", //this needs to be the input.(name of class in HTML doc)
+        this.runningAlgorithm = querySelector<HTMLInputElement> (
+            "input.runningAlgorithm",
             container
         );
+
+        this.insertNode = querySelector<HTMLInputElement> (
+            "input.insertNode",
+            container
+        )
+
+        this.startNode = querySelector<HTMLInputElement> (
+            "input.startNode",
+            container
+        )
 
         this.initialize();
     }
 
     initialize() {
-        //this.engine.(name of SubmitFunction) needs a defined function in
-        //the implementation of your engine with the same name as SubmitFunction
         this.chooseGraphI.addEventListener("change", () => {
             this.chosenGraph.value = this.chooseGraphI.value
             this.chooseGraphI.value = ""
             this.engine.submit(this.engine.chosenGraph, this.chosenGraph)
         })
 
-        this.start.addEventListener("click", () => {
-            this.engine.submit(this.engine.start, null)
+        this.runningAlgorithm.addEventListener("click", () => {
+            this.engine.submit(this.engine.runningAlgorithm, null)
         });
+
+        addReturnSubmit(this.insertNode, "ALPHANUM+", () =>
+                    this.engine.submit(this.engine.startNode, this.insertNode)
+            );
+
+        this.startNode.addEventListener("click", () => {
+            this.engine.submit(this.engine.startNode, this.insertNode)
+        })
     }
 }

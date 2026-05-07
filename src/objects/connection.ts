@@ -142,6 +142,36 @@ export class Connection<T extends GraphNode | BTreeNode | LinkedNode> extends Pa
         return this;
     }
 
+
+     setHighlightColor(enabled: boolean, cssClass?: string) {
+    const highlightClasses = [
+        'highlight',
+        'highlight-blue',
+        'highlight-green'
+    ];
+
+    
+    highlightClasses.forEach(c => this.removeClass(c));
+
+    const marker = this.reference<Element>("marker-end");
+
+    if (marker) {
+        marker.removeClass("marked");
+        highlightClasses.forEach(c => marker.removeClass(c));
+    }
+
+    
+    if (enabled) {
+        const classToApply = cssClass ?? 'highlight';
+
+        this.addClass(classToApply);
+
+        if (marker) {
+            marker.addClass("marked " + classToApply);
+        }
+    }
+}
+
     _getPath(): string {
         const C = this.$coords;
         const xControl = (C.x1 + C.x2) / 2 + (C.y1 - C.y2) * this.getBend();

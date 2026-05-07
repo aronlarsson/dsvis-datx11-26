@@ -71,6 +71,7 @@ export default class LinkedList<T> {
                 if(this.size==0){
                     this.head = node; 
                 }
+                this.tail = node; 
                 this.size++;
                 return true;
             }
@@ -159,9 +160,9 @@ export default class LinkedList<T> {
     }
 
     // returns the element at the given index
-    get(index: number): T | null {
+    get(index: number): T  {
         if (index < 0 || index >= this.size) {
-            console.log("Invalid index.");
+            throw new Error("Invalid index")
         } else {
             let counter = 0;
             let current = this.head;
@@ -175,7 +176,8 @@ export default class LinkedList<T> {
                 current = current.next;
             }
         }
-        return null;
+         throw new Error("Unexpected state");
+        
     }
 
     // finds the index of the given element, if it is not found then return null

@@ -3,22 +3,25 @@ import { DynamicArray } from "~/basic/dynamicArray";
 import { TextCircle } from "~/objects/text-circle";
 import { Collection } from "~/collections";
 
-export const SortMessages = {
+export const QueueMessages = {
     general: {
         empty: "Array is empty!",
         full: "Array is full!",
         finished: "Finished",
     },
     insert: {
-        value: (value: string) => `Pushing value: ${value}`,
+        start: (value: string) => `Array is empty, pushing value: ${value}, at index 0`,
+        value: (value: string) => `Pushing value: ${value}, at index after head`,
         movePointer: (value: string) => `Moving ${value} pointer`
     },
     copy: {
         index: (index: number) => `Copying index: ${index}`,
-        newSize: (size: number) => `Creating new Dynamic Array of length:  ${size}`,
+        start: "Copy values to the new array, starting at index 0",
+        head: (index: number) => `Copy head pointer to last non-empty index: ${index}`,
+        newSize: (size: number) => `Creating new Dynamic Array of length: ${size}`,
     },
     delete: {
-        delete: `Popping value at head`,
+        delete: `Popping value at head pointer`,
         removePointer: (value: string) => `Removing ${value} pointer`,
         movePointer: (value: string) => `Moving ${value} pointer`
     },
@@ -26,15 +29,13 @@ export const SortMessages = {
 
 export class StackDynamicArrayAnim extends Engine implements Collection {
     initialValues: Array<string> = [];
-    compensate: number = 0;
-    sortArray: DynamicArray;
-    indexLength: number = 0;
-    baseSize: number = 28;
-    messages: MessagesObject = SortMessages;
+    dArray: DynamicArray;
+    count: number = 0;
+    messages: MessagesObject = QueueMessages;
 
     constructor(containerSelector: string) {
         super(containerSelector);
-        this.sortArray = new DynamicArray(0, this.getObjectSize()); // Only added to make sure that sortArray never is null
+        this.dArray = new DynamicArray(0, this.getObjectSize()); // Only added to make sure that dArray never is null
     }
 
     initialise(initialValues = []) {
@@ -44,13 +45,13 @@ export class StackDynamicArrayAnim extends Engine implements Collection {
 
     async resetAlgorithm() {
         await super.resetAlgorithm();
-        this.indexLength = 0;
+        this.count = 0;
         const [xRoot, yRoot] = this.getTreeRoot();
-        this.sortArray = this.Svg.put(
+        this.dArray = this.Svg.put(
             new DynamicArray(1, this.getObjectSize())
         ).init(1, xRoot, yRoot + this.$Svg.margin * 1.5);
-        this.Svg.put(this.sortArray);
-        this.sortArray.setDisabled(0, false);
+        this.Svg.put(this.dArray);
+        this.dArray.setDisabled(0, false);
         if (this.initialValues) {
             this.state.runWhileResetting(
                 async () => await this.insert(...this.initialValues)
@@ -64,39 +65,28 @@ export class StackDynamicArrayAnim extends Engine implements Collection {
         }
     }
 
-    async swap(arr: DynamicArray, j: number, k: number) {
-        arr.swap(j, k, true);
-        arr.setIndexHighlight(j, true);
-        await this.pause(
-            "sort.swap",
-            this.sortArray.getValue(j),
-            this.sortArray.getValue(k)
-        );
-    }
-
     async resize(length: number){
         const [xRoot, yRoot] = this.getTreeRoot();
-        let newArray = 
+        let newArray =      // creates the new array and puts it in the right place
         this.Svg.put(
-            new DynamicArray(this.sortArray.getSize(), this.getObjectSize())
+            new DynamicArray(this.dArray.getSize(), this.getObjectSize())
         ).init(0, xRoot, yRoot + this.$Svg.margin * 6);
         newArray.setSize(length);
         newArray.center(
         this.getTreeRoot()[0],
         this.getTreeRoot()[1] + this.$Svg.margin * 4 + this.getObjectSize() * 4
         );
-        newArray.y(this.getTreeRoot()[1] + this.$Svg.margin * 1.5 + this.getObjectSize() + Number(this.sortArray.height()));
+        newArray.y(this.getTreeRoot()[1] + this.$Svg.margin * 1.5 + this.getObjectSize() + Number(this.dArray.height()));
             
         await this.pause("copy.newSize", length);
 
+        await this.pause("copy.start");
 
-        await this.pause("Copy values to the new array");
-
-        for(let i = 0; i < this.indexLength; i++){
-            let val = this.sortArray.getValue(i)
+        for(let i = 0; i < this.count; i++){  // animation for moving all the values to the new array
+            let val = this.dArray.getValue(i)
             const arrayLabel = this.Svg.put(
                 new TextCircle(val, this.getObjectSize(), this.getStrokeWidth())
-            ).init(this.sortArray.getCX(i), this.sortArray.getCY(i));
+            ).init(this.dArray.getCX(i), this.dArray.getCY(i));
 
             await this.pause("copy.index", i);
 
@@ -113,19 +103,17 @@ export class StackDynamicArrayAnim extends Engine implements Collection {
             newArray.setValue(i, val);
         }
 
-        if(length != 1){ //only resizes if it has an arrow
-            newArray.addArrow(this.indexLength - 1, "Head",  "#C00");
+        newArray.addArrow(this.count - 1, "head",  "#C00")  
 
-            await this.pause("Copy Head pointer");
-        }
+        await this.pause("copy.head", this.count - 1);
 
-        this.sortArray.remove();
-        this.sortArray = newArray;
-        this.animate(this.sortArray, !this.state.isResetting()).center(
+        this.dArray.remove();
+        this.dArray = newArray;
+        this.animate(this.dArray, !this.state.isResetting()).center(
         this.getTreeRoot()[0],
         this.getTreeRoot()[1] + this.$Svg.margin * 1.5
         );
-        this.animate(this.sortArray, !this.state.isResetting()).y(
+        this.animate(this.dArray, !this.state.isResetting()).y(
         this.getTreeRoot()[1] + this.$Svg.margin * 1.5
         );
 
@@ -134,92 +122,74 @@ export class StackDynamicArrayAnim extends Engine implements Collection {
     }
 
     async insertOne(value: number | string) {
-        if(this.indexLength >= this.sortArray.getSize()){
+        if(this.count >= this.dArray.getSize()){
             await this.pause("Dynamic Array is full!");
-            await this.resize(this.indexLength * 2);
+            await this.resize(this.count * 2);
         }
         value = String(value);
-        const arrayLabel = this.Svg.put(
+        const arrayLabel = this.Svg.put(    // creates the value in a text circle
             new TextCircle(value, this.getObjectSize(), this.getStrokeWidth())
         ).init(...this.getNodeStart());
-        await this.pause("insert.value", value);
-        const currentIndex = this.indexLength;
-        arrayLabel.setCenter(
-            this.sortArray.getCX(currentIndex),
-            this.sortArray.getCY(currentIndex),
+
+        if(this.count == 0){
+            await this.pause("insert.start", value);
+        }
+        else {
+            await this.pause("insert.value", value);
+        }
+
+        const currentIndex = this.count;
+        arrayLabel.setCenter(   // moves the circle to the right index with animation
+            this.dArray.getCX(currentIndex),
+            this.dArray.getCY(currentIndex),
             this.getAnimationSpeed()
         );
+
         await this.pause(undefined);
-        if(this.indexLength == 0){
-            
-            this.sortArray.addArrow(0, "Head", "#C00");
-            await this.pause("Creating Head pointer");
+
+        if(this.count == 0){    // the array starts from empty, create the pointer, otherwise move it
+            this.dArray.addArrow(0, "head", "#C00");
+            await this.pause("Creating head pointer");
         }
         else{
-            this.sortArray.moveArrow("Head", this.indexLength);
-            await this.pause("insert.movePointer", "Head");
+            this.dArray.moveArrow("head", this.count);
+            await this.pause("insert.movePointer", "head");
         }
 
         arrayLabel.remove();
-        this.sortArray.setDisabled(currentIndex, false);
-        this.sortArray.setValue(currentIndex, value);
-        this.sortArray.setIndexHighlight(currentIndex, true);
-        this.indexLength++;
-        this.sortArray.setIndexHighlight(currentIndex, false);
+        this.dArray.setDisabled(currentIndex, false);
+        this.dArray.setValue(currentIndex, value);
+        this.dArray.setIndexHighlight(currentIndex, true);
+        this.count++;
+        this.dArray.setIndexHighlight(currentIndex, false);
 
         await this.pause(undefined);
     }
 
     async find(...values: (string | number)[]): Promise<void> {
-        for (const val of values) {
-            await this.findOne(val);
-        }
-    }
-
-    async findOne(value: string | number): Promise<number | null> {
-        await this.pause("find.start", value); //start the search
-        let curIndex = 0;
-        this.sortArray.setIndexHighlight(curIndex, true);
-        await this.pause("find.read", curIndex);
-        for(let i = 0; i < this.indexLength; i++){
-            if(value == this.sortArray.getValue(i)){
-                await this.pause("find.found", value);
-                this.sortArray.setIndexHighlight(i, false);
-                return i;
-            }
-            else{
-                await this.pause("find.notfound", value); //not found
-                this.sortArray.setIndexHighlight(i, false);
-                if (i + 1 < this.indexLength) {
-                    this.sortArray.setIndexHighlight(i + 1, true);
-                    await this.pause("find.look", i + 1);
-                }
-            }
-        }
-        await this.pause("find.nonExistent", value);
-        return null;
+       
     }
 
     async delete(value: string | number): Promise<void> {
-        const index = this.indexLength - 1;
+        const index = this.count - 1;
         if(index >= 0){
             await this.pause("delete.delete");
-            this.sortArray.setIndexHighlight(index, true);
-            this.sortArray.setIndexHighlight(index, false);
-            this.sortArray.setValue(index, "");
-            this.indexLength--;
+            this.dArray.setIndexHighlight(index, true);
+            this.dArray.setIndexHighlight(index, false);
+            this.dArray.setValue(index, "");
+            this.count--;
             if(index != 0){
-                await this.pause("delete.movePointer", "Head");
-                this.sortArray.moveArrow("Head", this.indexLength - 1);
+                await this.pause("delete.movePointer", "head");
+                this.dArray.moveArrow("head", this.count - 1);
             }
             else{
-                await this.pause("delete.removePointer", "Head");
-                this.sortArray.removeArrow("Head");
+                await this.pause("delete.removePointer", "head");
+                this.dArray.removeArrow("head");
             }
 
-            if(this.indexLength != 0 && this.indexLength <= this.sortArray.getSize() / 4){
+            if(this.count != 0 && this.count <= this.dArray.getSize() / 4){ // resize if array is less than 1/4 full
                 await this.pause("Array is less than 1/4 full!");
-                await this.resize(this.sortArray.getSize() / 2);
+                await this.resize(this.dArray.getSize() / 2);
             }
         }
         await this.pause(undefined);

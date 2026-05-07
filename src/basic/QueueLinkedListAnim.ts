@@ -2,40 +2,18 @@ import { Collection } from "~/collections";
 import { Engine, MessagesObject, SubmitFunction } from "~/engine";
 import { LinkedNode } from "~/objects/basic-structure-objects/linked-node";
 import { LinkedConnection } from "~/objects/basic-structure-objects/node-connection";
-//import LinkedList from "./LinkedList";
 import Queue from "./Queue"
 
 
 export const QueueLinkedListMessages = {
-    general: {
-        empty: "Queue is empty!",
-        full: "Queue is full!",
-        finished: "Finished",
-    },
-    /*find: {
-        start: (element: string | number) => `Searching for ${element}`,
-        found: (element: string | number) => `Found ${element}`,
-        notfound: (element: string | number) => `Did not find ${element}`,
-        look: (element: string | number) =>
-            `Looking into the next node: ${element}`,
-        read: (element: string | number) =>
-            `Reading the value of the node: ${element}`,
-        nonExistent: (element: string | number) =>
-            `Element ${element} does not exist`,
-    },*/
-    /*findTail:{
-        look: (element: string | number) => `Looking into the next node: ${element}`,
-        found: (element: string | number) => `Node ${element} does not have child`,
-        notfound: (element: string | number) => `Node ${element} has child`,
-    },*/
     insert: {
-        element: (element: string | number) => `Insert element: ${element}`,
+        element: (element: string | number) => `Enqueuing element: ${element}`,
         head: (element: string | number) =>
             `Queue is empty, insert ${element} as head`,
-        adjustPointer: "Moving tail pointer"
+        adjustPointer: "Moving tail pointer to enqueued node"
     },
     delete: {
-        delete: (value: string) => `Popping head node`,
+        delete: `Dequeuing node at head`,
         adjustLink: "Adjusting link",
         adjustPos: "Adjusting positions",
     },
@@ -52,7 +30,6 @@ export class QueueLinkedListAnim<T> extends Engine implements Collection{
 
     messages: MessagesObject = QueueLinkedListMessages;
     initialValues: string[] | null = null; // Only used for hard-coded values
-    maxListSize: number = 0; // Limit the size of the Queue to maintain readability
     queue: Queue<string | number> = new Queue(); // Queue instance
     nodeArray: [LinkedNode, LinkedConnection | null][] = []; // Array to store the nodes and connections
     nodeDimensions: [number, number] = [
@@ -86,7 +63,6 @@ export class QueueLinkedListAnim<T> extends Engine implements Collection{
         this.queue = new Queue();
         this.nodeArray = [];
         this.nodeDimensions = [this.getObjectSize() * 2, this.getObjectSize()];
-        this.maxListSize = this.calculateMaxListSize();
 
         // If initial values are provided, insert them into the animated Queue
         await this.state.runWhileResetting(async () => {
@@ -99,17 +75,8 @@ export class QueueLinkedListAnim<T> extends Engine implements Collection{
     // Enqueue
     async insert(...values: (string | number)[]): Promise<void>{
         for (const val of values) {
-            // if (this.queue.size() === this.maxListSize) {
-            //     await this.pause("general.full");
-            // } else {
-            //     if(this.queue.size() != 0){
-            //         //await this.findTail();
-            //         await this.pause("Insert at tail.");
-            //     }
-            //     await this.insertBack(val);
-            // }
             if(this.queue.size() != 0){
-                await this.pause("Insert at tail.");
+                await this.pause("Enqueue at tail");
             }
             await this.insertBack(val);
         }
@@ -130,7 +97,6 @@ export class QueueLinkedListAnim<T> extends Engine implements Collection{
         );
 
         const size = this.queue.size();
-        
 
         this.Svg.add(node);
 
@@ -362,23 +328,6 @@ export class QueueLinkedListAnim<T> extends Engine implements Collection{
             this.nodeArray.push([node, connection]);
         }
 
-    }
-
-
-    private calculateMaxListSize(): number {
-        const [nodeWidth, nodeHeight] = this.nodeDimensions;
-        const maxNodesPerRow = Math.max(
-            1,
-            Math.floor(
-                (this.$Svg.width - 2 * this.MIN_SIDE_MARGIN) /
-                    (nodeWidth + this.getNodeSpacing())
-            )
-        );
-        const maxRows = Math.floor(
-            (this.$Svg.height - this.TOP_MARGIN - this.MIN_SIDE_MARGIN) /
-                (nodeHeight + this.getNodeSpacing())
-        );
-        return maxNodesPerRow * maxRows;
     }
 
     async makeConnections(node: LinkedNode): Promise<LinkedConnection | null> {
