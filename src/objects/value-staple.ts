@@ -1,6 +1,11 @@
 import { G, Rect, Text } from "@svgdotjs/svg.js";
 
 export class ValueStaple extends G {
+    setValue(value: number) {
+        this.$value = value;
+        this.$text.text(String(value));
+        return this;
+    }
     $textGap: number = 5;
 
     $rect: Rect;

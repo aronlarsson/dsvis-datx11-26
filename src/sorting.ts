@@ -7,6 +7,9 @@ import { MergeSort } from "./sorting/MergeSort";
 import { QuickSort } from "./sorting/QuickSort";
 import { SelectionSort } from "./sorting/SelectionSort";
 import { BaseSorter } from "~/sorting/BaseSorter";
+import { BubbleSort } from "./sorting/BubbleSort";
+import { HeapSort } from "./sorting/HeapSort";
+import { RadixSort } from "./sorting/RadixSort";
 
 let right: number = 0;
 let down: number = 0;
@@ -25,6 +28,9 @@ const SORTING_CLASSES = {
     InsertionSort: InsertionSort,
     MergeSort: MergeSort,
     QuickSort: QuickSort,
+    BubbleSort: BubbleSort,
+    HeapSort: HeapSort,
+    RadixSort: RadixSort,
 } as const satisfies RecordOfEngines<Sorter>;
 
 const { engine, isBaseEngine } = initialiseEngine<Sorter>(
@@ -45,4 +51,3 @@ if (!isBaseEngine) {
         );
     }
 }
-

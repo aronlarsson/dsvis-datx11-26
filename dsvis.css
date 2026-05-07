@@ -271,6 +271,12 @@ line.gridline, svg .invisible, svg .nullnode {
 	stroke: none;
 }
 
+/* Allow null-child markers to be highlighted even when nullnodes are hidden by default */
+svg .nullnode.highlight {
+	stroke: #C00;
+	fill: none;
+}
+
 line.gridline {
 	stroke-width: 1;
 }
@@ -298,6 +304,50 @@ svg .highlightblue, svg .highlightblue > * {
 svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled, svg .highlightblue > text {
 	stroke: none;
 	fill: #04D9FF;
+}
+
+/* Tree/binary node highlight classes */
+svg g.primaryHighlight > rect,
+svg g.primaryHighlight > circle {
+	stroke: #1d4ed8;
+	stroke-width: 3px;
+}
+
+svg g.secondaryHighlight > rect,
+svg g.secondaryHighlight > circle {
+	stroke: #16a34a;
+	stroke-width: 3px;
+}
+
+svg g.tertiaryHighlight > rect,
+svg g.tertiaryHighlight > circle {
+	stroke: #f59e0b;
+	stroke-width: 3px;
+}
+
+svg g.primaryHighlight > text {
+	fill: #1d4ed8;
+}
+
+svg g.secondaryHighlight > text {
+	fill: #16a34a;
+}
+
+svg g.tertiaryHighlight > text {
+	fill: #f59e0b;
+}
+
+/* If edge elements receive the highlight classes directly */
+svg path.primaryHighlight, svg line.primaryHighlight {
+	stroke: #1d4ed8;
+}
+
+svg path.secondaryHighlight, svg line.secondaryHighlight {
+	stroke: #16a34a;
+}
+
+svg path.tertiaryHighlight, svg line.tertiaryHighlight {
+	stroke: #f59e0b;
 }
 
 

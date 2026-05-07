@@ -115,6 +115,20 @@ export class StapleArray extends G {
         this.init(currentCenter.x, currentCenter.y);
     }
 
+    setValue(i: number, value: number) {
+        const currentCenter = { x: this.cx(), y: this.cy() };
+        if (value > this.$maxValue) {
+            this.$maxValue = value;
+            this.resizeStaples();
+        }
+        this.$staples[i].setValue(value);
+        this.$staples[i].setStapleHeight(
+            this.$stapleMaxHeight * (value / this.$maxValue)
+        );
+        this.$staples[i].init();
+        this.init(currentCenter.x, currentCenter.y);
+    }
+
     /**
      * Remove a value by its index.
      * This method both removes the element from the staple array,
