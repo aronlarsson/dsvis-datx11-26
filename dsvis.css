@@ -2,207 +2,207 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
-	--dsvis-page-bg: #70171f;
-	--dsvis-main-bg: #fff8dc;
-	--dsvis-main-fg: #1f2328;
-	--dsvis-header-bg: #70171f;
-	--dsvis-header-fg: #fff8dc;
-	--dsvis-surface-bg: #70171f;
-	--dsvis-surface-fg: #fff8dc;
-	--dsvis-link-active: #ffffff;
-	--dsvis-disabled-fg: #6c757d;
-	--dsvis-btn-outline-fg: #1f2328;
-	--dsvis-btn-outline-border: #1f2328;
-	--dsvis-btn-solid-bg: #70171f;
-	--dsvis-btn-solid-fg: #fff8dc;
-	--dsvis-media-outline-fg: #fff8dc;
-	--dsvis-media-outline-border: #fff8dc;
-	--dsvis-media-solid-bg: #fff8dc;
-	--dsvis-media-solid-fg: #70171f;
-	--dsvis-field-bg: #ffffff;
-	--dsvis-field-fg: #1f2328;
-	--dsvis-field-border: #5c6670;
-	--dsvis-field-border-focus: #1f2328;
-	--dsvis-field-focus-ring: #1f232840;
-	--dsvis-svg-bg: #ffffff;
-	--dsvis-svg-border: #70171f;
-	--dsvis-status-fg: #808080;
-	--dsvis-status-paused: #a52a2a;
-	--dsvis-status-running: #008000;
-	--dsvis-title-fg: #a52a2a;
-	--dsvis-printer-fg: #0000ff;
-	--dsvis-shape-stroke: #000000;
-	--dsvis-shape-fill: #fff8dc;
-	--dsvis-edge-fill: #ffffff;
-	--dsvis-edge-stroke: #000000;
-	--dsvis-line-stroke: #000000;
-	--dsvis-filled: #000000;
-	--dsvis-marked: #008000;
-	--dsvis-highlight: #cc0000;
-	--dsvis-node-text: #000000;
-	--dsvis-red-node: #ffc0cb;
-	--dsvis-red-black-node: #d3d3d3;
-	--dsvis-disabled-fill: #d3d3d3;
-	--dsvis-nullnode-fill: #000000;
-	--dsvis-gridline-debug: #d3d3d3;
-	--dsvis-highlight-blue: #04d9ff;
+	--page-bg: #70171f;
+	--main-bg: #fff8dc;
+	--main-fg: #1f2328;
+	--header-bg: #70171f;
+	--header-fg: #fff8dc;
+	--surface-bg: #70171f;
+	--surface-fg: #fff8dc;
+	--link-active: #ffffff;
+	--disabled-fg: #6c757d;
+	--btn-outline-fg: #1f2328;
+	--btn-outline-border: #1f2328;
+	--btn-solid-bg: #70171f;
+	--btn-solid-fg: #fff8dc;
+	--media-outline-fg: #fff8dc;
+	--media-outline-border: #fff8dc;
+	--media-solid-bg: #fff8dc;
+	--media-solid-fg: #70171f;
+	--field-bg: #ffffff;
+	--field-fg: #1f2328;
+	--field-border: #5c6670;
+	--field-border-focus: #1f2328;
+	--field-focus-ring: #1f232840;
+	--svg-bg: #ffffff;
+	--svg-border: #70171f;
+	--status-fg: #808080;
+	--status-paused: #a52a2a;
+	--status-running: #008000;
+	--title-fg: #a52a2a;
+	--printer-fg: #0000ff;
+	--shape-stroke: #000000;
+	--shape-fill: #fff8dc;
+	--edge-fill: #ffffff;
+	--edge-stroke: #000000;
+	--line-stroke: #000000;
+	--filled: #000000;
+	--marked: #008000;
+	--highlight: #cc0000;
+	--node-text: #000000;
+	--red-node: #ffc0cb;
+	--red-black-node: #d3d3d3;
+	--disabled-fill: #d3d3d3;
+	--nullnode-fill: #000000;
+	--gridline-debug: #d3d3d3;
+	--highlight-blue: #04d9ff;
 	--node-font-size: 100%;
 }
 
 body {
 	min-height: 100vh;
-	background-color: var(--dsvis-page-bg);
-	color: var(--dsvis-main-fg);
-	--bs-body-color: var(--dsvis-main-fg);
-	--bs-body-bg: var(--dsvis-main-bg);
+	background-color: var(--page-bg);
+	color: var(--main-fg);
+	--bs-body-color: var(--main-fg);
+	--bs-body-bg: var(--main-bg);
 	padding-top: 56px;
 }
 
 body.theme-dark {
-	--dsvis-page-bg: #111418;
-	--dsvis-main-bg: #1c2026;
-	--dsvis-main-fg: #e8ebef;
-	--dsvis-header-bg: #0d0f12;
-	--dsvis-header-fg: #e8ebef;
-	--dsvis-surface-bg: #0d0f12;
-	--dsvis-surface-fg: #e8ebef;
-	--dsvis-link-active: #f7fafc;
-	--dsvis-disabled-fg: #9aa4af;
-	--dsvis-btn-outline-fg: #e8ebef;
-	--dsvis-btn-outline-border: #e8ebef;
-	--dsvis-btn-solid-bg: #2b3440;
-	--dsvis-btn-solid-fg: #e8ebef;
-	--dsvis-media-outline-fg: #e8ebef;
-	--dsvis-media-outline-border: #e8ebef;
-	--dsvis-media-solid-bg: #e8ebef;
-	--dsvis-media-solid-fg: #111418;
-	--dsvis-field-bg: #1a212b;
-	--dsvis-field-fg: #e8ebef;
-	--dsvis-field-border: #9aa4af;
-	--dsvis-field-border-focus: #e8ebef;
-	--dsvis-field-focus-ring: #e8ebef40;
-	--dsvis-svg-bg: #232933;
-	--dsvis-svg-border: #e8ebef;
-	--dsvis-status-fg: #b0bac5;
-	--dsvis-status-paused: #ffb4a2;
-	--dsvis-status-running: #84e296;
-	--dsvis-title-fg: #ffb4a2;
-	--dsvis-printer-fg: #9ec5ff;
-	--dsvis-shape-stroke: #e8ebef;
-	--dsvis-shape-fill: #2f3642;
-	--dsvis-edge-fill: #2f3642;
-	--dsvis-edge-stroke: #e8ebef;
-	--dsvis-line-stroke: #e8ebef;
-	--dsvis-filled: #e8ebef;
-	--dsvis-marked: #84e296;
-	--dsvis-highlight: #ff8a80;
-	--dsvis-node-text: #e8ebef;
-	--dsvis-red-node: #b56576;
-	--dsvis-red-black-node: #8d99ae;
-	--dsvis-disabled-fill: #6c757d;
-	--dsvis-nullnode-fill: #e8ebef;
-	--dsvis-gridline-debug: #6c757d;
-	--dsvis-highlight-blue: #7bdff2;
+	--page-bg: #111418;
+	--main-bg: #1c2026;
+	--main-fg: #e8ebef;
+	--header-bg: #0d0f12;
+	--header-fg: #e8ebef;
+	--surface-bg: #0d0f12;
+	--surface-fg: #e8ebef;
+	--link-active: #f7fafc;
+	--disabled-fg: #9aa4af;
+	--btn-outline-fg: #e8ebef;
+	--btn-outline-border: #e8ebef;
+	--btn-solid-bg: #2b3440;
+	--btn-solid-fg: #e8ebef;
+	--media-outline-fg: #e8ebef;
+	--media-outline-border: #e8ebef;
+	--media-solid-bg: #e8ebef;
+	--media-solid-fg: #111418;
+	--field-bg: #1a212b;
+	--field-fg: #e8ebef;
+	--field-border: #9aa4af;
+	--field-border-focus: #e8ebef;
+	--field-focus-ring: #e8ebef40;
+	--svg-bg: #232933;
+	--svg-border: #e8ebef;
+	--status-fg: #b0bac5;
+	--status-paused: #ffb4a2;
+	--status-running: #84e296;
+	--title-fg: #ffb4a2;
+	--printer-fg: #9ec5ff;
+	--shape-stroke: #e8ebef;
+	--shape-fill: #2f3642;
+	--edge-fill: #2f3642;
+	--edge-stroke: #e8ebef;
+	--line-stroke: #e8ebef;
+	--filled: #e8ebef;
+	--marked: #84e296;
+	--highlight: #ff8a80;
+	--node-text: #e8ebef;
+	--red-node: #b56576;
+	--red-black-node: #8d99ae;
+	--disabled-fill: #6c757d;
+	--nullnode-fill: #e8ebef;
+	--gridline-debug: #6c757d;
+	--highlight-blue: #7bdff2;
 }
 
 body.theme-colorblind {
-	--dsvis-page-bg: #0f2d4f;
-	--dsvis-main-bg: #f4f7fb;
-	--dsvis-main-fg: #102a43;
-	--dsvis-header-bg: #0f2d4f;
-	--dsvis-header-fg: #f4f7fb;
-	--dsvis-surface-bg: #0f2d4f;
-	--dsvis-surface-fg: #f4f7fb;
-	--dsvis-link-active: #ffd166;
-	--dsvis-disabled-fg: #486581;
-	--dsvis-btn-outline-fg: #102a43;
-	--dsvis-btn-outline-border: #102a43;
-	--dsvis-btn-solid-bg: #0f2d4f;
-	--dsvis-btn-solid-fg: #f4f7fb;
-	--dsvis-media-outline-fg: #f4f7fb;
-	--dsvis-media-outline-border: #f4f7fb;
-	--dsvis-media-solid-bg: #ffd166;
-	--dsvis-media-solid-fg: #102a43;
-	--dsvis-field-bg: #ffffff;
-	--dsvis-field-fg: #102a43;
-	--dsvis-field-border: #334e68;
-	--dsvis-field-border-focus: #102a43;
-	--dsvis-field-focus-ring: #102a4340;
-	--dsvis-svg-bg: #ffffff;
-	--dsvis-svg-border: #0f2d4f;
-	--dsvis-status-fg: #486581;
-	--dsvis-status-paused: #d97706;
-	--dsvis-status-running: #0f766e;
-	--dsvis-title-fg: #b45309;
-	--dsvis-printer-fg: #1d4ed8;
-	--dsvis-shape-stroke: #102a43;
-	--dsvis-shape-fill: #fff8dc;
-	--dsvis-edge-fill: #ffffff;
-	--dsvis-edge-stroke: #102a43;
-	--dsvis-line-stroke: #102a43;
-	--dsvis-filled: #102a43;
-	--dsvis-marked: #0f766e;
-	--dsvis-highlight: #b91c1c;
-	--dsvis-node-text: #102a43;
-	--dsvis-red-node: #ffc0cb;
-	--dsvis-red-black-node: #d3d3d3;
-	--dsvis-disabled-fill: #d3d3d3;
-	--dsvis-nullnode-fill: #102a43;
-	--dsvis-gridline-debug: #9fb3c8;
-	--dsvis-highlight-blue: #2563eb;
+	--page-bg: #0f2d4f;
+	--main-bg: #f4f7fb;
+	--main-fg: #102a43;
+	--header-bg: #0f2d4f;
+	--header-fg: #f4f7fb;
+	--surface-bg: #0f2d4f;
+	--surface-fg: #f4f7fb;
+	--link-active: #ffd166;
+	--disabled-fg: #486581;
+	--btn-outline-fg: #102a43;
+	--btn-outline-border: #102a43;
+	--btn-solid-bg: #0f2d4f;
+	--btn-solid-fg: #f4f7fb;
+	--media-outline-fg: #f4f7fb;
+	--media-outline-border: #f4f7fb;
+	--media-solid-bg: #ffd166;
+	--media-solid-fg: #102a43;
+	--field-bg: #ffffff;
+	--field-fg: #102a43;
+	--field-border: #334e68;
+	--field-border-focus: #102a43;
+	--field-focus-ring: #102a4340;
+	--svg-bg: #ffffff;
+	--svg-border: #0f2d4f;
+	--status-fg: #486581;
+	--status-paused: #d97706;
+	--status-running: #0f766e;
+	--title-fg: #b45309;
+	--printer-fg: #1d4ed8;
+	--shape-stroke: #102a43;
+	--shape-fill: #fff8dc;
+	--edge-fill: #ffffff;
+	--edge-stroke: #102a43;
+	--line-stroke: #102a43;
+	--filled: #102a43;
+	--marked: #0f766e;
+	--highlight: #b91c1c;
+	--node-text: #102a43;
+	--red-node: #ffc0cb;
+	--red-black-node: #d3d3d3;
+	--disabled-fill: #d3d3d3;
+	--nullnode-fill: #102a43;
+	--gridline-debug: #9fb3c8;
+	--highlight-blue: #2563eb;
 }
 
 body.theme-dark.theme-colorblind {
-	--dsvis-page-bg: #111418;
-	--dsvis-main-bg: #1c2026;
-	--dsvis-main-fg: #e8ebef;
-	--dsvis-header-bg: #0d0f12;
-	--dsvis-header-fg: #e8ebef;
-	--dsvis-surface-bg: #0d0f12;
-	--dsvis-surface-fg: #e8ebef;
-	--dsvis-link-active: #ffd166;
-	--dsvis-disabled-fg: #9aa4af;
-	--dsvis-btn-outline-fg: #e8ebef;
-	--dsvis-btn-outline-border: #e8ebef;
-	--dsvis-btn-solid-bg: #2b3440;
-	--dsvis-btn-solid-fg: #e8ebef;
-	--dsvis-media-outline-fg: #e8ebef;
-	--dsvis-media-outline-border: #e8ebef;
-	--dsvis-media-solid-bg: #ffd166;
-	--dsvis-media-solid-fg: #111418;
-	--dsvis-field-bg: #1a212b;
-	--dsvis-field-fg: #e8ebef;
-	--dsvis-field-border: #9aa4af;
-	--dsvis-field-border-focus: #ffd166;
-	--dsvis-field-focus-ring: #ffd16640;
-	--dsvis-svg-bg: #232933;
-	--dsvis-svg-border: #e8ebef;
-	--dsvis-status-fg: #b0bac5;
-	--dsvis-status-paused: #ffd166;
-	--dsvis-status-running: #57cc99;
-	--dsvis-title-fg: #ffd166;
-	--dsvis-printer-fg: #90cdf4;
-	--dsvis-shape-stroke: #e8ebef;
-	--dsvis-shape-fill: #2f3642;
-	--dsvis-edge-fill: #2f3642;
-	--dsvis-edge-stroke: #e8ebef;
-	--dsvis-line-stroke: #e8ebef;
-	--dsvis-filled: #e8ebef;
-	--dsvis-marked: #57cc99;
-	--dsvis-highlight: #ff8a80;
-	--dsvis-node-text: #e8ebef;
-	--dsvis-red-node: #b56576;
-	--dsvis-red-black-node: #8d99ae;
-	--dsvis-disabled-fill: #6c757d;
-	--dsvis-nullnode-fill: #e8ebef;
-	--dsvis-gridline-debug: #6c757d;
-	--dsvis-highlight-blue: #90cdf4;
+	--page-bg: #111418;
+	--main-bg: #1c2026;
+	--main-fg: #e8ebef;
+	--header-bg: #0d0f12;
+	--header-fg: #e8ebef;
+	--surface-bg: #0d0f12;
+	--surface-fg: #e8ebef;
+	--link-active: #ffd166;
+	--disabled-fg: #9aa4af;
+	--btn-outline-fg: #e8ebef;
+	--btn-outline-border: #e8ebef;
+	--btn-solid-bg: #2b3440;
+	--btn-solid-fg: #e8ebef;
+	--media-outline-fg: #e8ebef;
+	--media-outline-border: #e8ebef;
+	--media-solid-bg: #ffd166;
+	--media-solid-fg: #111418;
+	--field-bg: #1a212b;
+	--field-fg: #e8ebef;
+	--field-border: #9aa4af;
+	--field-border-focus: #ffd166;
+	--field-focus-ring: #ffd16640;
+	--svg-bg: #232933;
+	--svg-border: #e8ebef;
+	--status-fg: #b0bac5;
+	--status-paused: #ffd166;
+	--status-running: #57cc99;
+	--title-fg: #ffd166;
+	--printer-fg: #90cdf4;
+	--shape-stroke: #e8ebef;
+	--shape-fill: #2f3642;
+	--edge-fill: #2f3642;
+	--edge-stroke: #e8ebef;
+	--line-stroke: #e8ebef;
+	--filled: #e8ebef;
+	--marked: #57cc99;
+	--highlight: #ff8a80;
+	--node-text: #e8ebef;
+	--red-node: #b56576;
+	--red-black-node: #8d99ae;
+	--disabled-fill: #6c757d;
+	--nullnode-fill: #e8ebef;
+	--gridline-debug: #6c757d;
+	--highlight-blue: #90cdf4;
 }
 
 .site-header,
 .site-footer {
-	background-color: var(--dsvis-header-bg);
-	color: var(--dsvis-header-fg);
+	background-color: var(--header-bg);
+	color: var(--header-fg);
 }
 
 .site-header-title {
@@ -212,80 +212,80 @@ body.theme-dark.theme-colorblind {
 
 .dsvis-navbar,
 .dsvis-offcanvas {
-	background-color: var(--dsvis-surface-bg);
-	color: var(--dsvis-surface-fg);
+	background-color: var(--surface-bg);
+	color: var(--surface-fg);
 }
 
 .dsvis-offcanvas .nav-link,
 .dsvis-offcanvas .offcanvas-title {
-	color: var(--dsvis-surface-fg);
+	color: var(--surface-fg);
 }
 
 .dsvis-offcanvas .list-group-item {
 	background-color: transparent;
-	border-color: var(--dsvis-surface-fg);
-	color: var(--dsvis-surface-fg);
+	border-color: var(--surface-fg);
+	color: var(--surface-fg);
 }
 
 .dsvis-offcanvas .list-group-item:hover,
 .dsvis-offcanvas .list-group-item:focus {
-	background-color: var(--dsvis-surface-fg);
-	color: var(--dsvis-surface-bg);
+	background-color: var(--surface-fg);
+	color: var(--surface-bg);
 }
 
 .dsvis-offcanvas .list-group-item.active {
-	background-color: var(--dsvis-link-active);
-	border-color: var(--dsvis-link-active);
-	color: var(--dsvis-surface-bg);
+	background-color: var(--link-active);
+	border-color: var(--link-active);
+	color: var(--surface-bg);
 }
 
 .dsvis-offcanvas .nav-link.active,
 .dsvis-offcanvas .nav-link:hover,
 .dsvis-offcanvas .nav-link:focus {
-	color: var(--dsvis-link-active);
+	color: var(--link-active);
 }
 
 .btn-outline-dark {
-	--bs-btn-color: var(--dsvis-btn-outline-fg);
-	--bs-btn-border-color: var(--dsvis-btn-outline-border);
-	--bs-btn-hover-color: var(--dsvis-btn-solid-fg);
-	--bs-btn-hover-bg: var(--dsvis-btn-solid-bg);
-	--bs-btn-hover-border-color: var(--dsvis-btn-solid-bg);
-	--bs-btn-active-color: var(--dsvis-btn-solid-fg);
-	--bs-btn-active-bg: var(--dsvis-btn-solid-bg);
-	--bs-btn-active-border-color: var(--dsvis-btn-solid-bg);
+	--bs-btn-color: var(--btn-outline-fg);
+	--bs-btn-border-color: var(--btn-outline-border);
+	--bs-btn-hover-color: var(--btn-solid-fg);
+	--bs-btn-hover-bg: var(--btn-solid-bg);
+	--bs-btn-hover-border-color: var(--btn-solid-bg);
+	--bs-btn-active-color: var(--btn-solid-fg);
+	--bs-btn-active-bg: var(--btn-solid-bg);
+	--bs-btn-active-border-color: var(--btn-solid-bg);
 }
 
 .btn-dark {
-	--bs-btn-color: var(--dsvis-btn-solid-fg);
-	--bs-btn-bg: var(--dsvis-btn-solid-bg);
-	--bs-btn-border-color: var(--dsvis-btn-solid-bg);
-	--bs-btn-hover-color: var(--dsvis-btn-solid-fg);
-	--bs-btn-hover-bg: var(--dsvis-btn-solid-bg);
-	--bs-btn-hover-border-color: var(--dsvis-btn-solid-bg);
-	--bs-btn-active-color: var(--dsvis-btn-solid-fg);
-	--bs-btn-active-bg: var(--dsvis-btn-solid-bg);
-	--bs-btn-active-border-color: var(--dsvis-btn-solid-bg);
+	--bs-btn-color: var(--btn-solid-fg);
+	--bs-btn-bg: var(--btn-solid-bg);
+	--bs-btn-border-color: var(--btn-solid-bg);
+	--bs-btn-hover-color: var(--btn-solid-fg);
+	--bs-btn-hover-bg: var(--btn-solid-bg);
+	--bs-btn-hover-border-color: var(--btn-solid-bg);
+	--bs-btn-active-color: var(--btn-solid-fg);
+	--bs-btn-active-bg: var(--btn-solid-bg);
+	--bs-btn-active-border-color: var(--btn-solid-bg);
 }
 
 .form-control,
 .form-select {
-	background-color: var(--dsvis-field-bg);
-	border-color: var(--dsvis-field-border);
-	color: var(--dsvis-field-fg);
+	background-color: var(--field-bg);
+	border-color: var(--field-border);
+	color: var(--field-fg);
 }
 
 .form-control:focus,
 .form-select:focus {
-	background-color: var(--dsvis-field-bg);
-	border-color: var(--dsvis-field-border-focus);
-	box-shadow: 0 0 0 0.2rem var(--dsvis-field-focus-ring);
-	color: var(--dsvis-field-fg);
+	background-color: var(--field-bg);
+	border-color: var(--field-border-focus);
+	box-shadow: 0 0 0 0.2rem var(--field-focus-ring);
+	color: var(--field-fg);
 }
 
 main {
-	background-color: var(--dsvis-main-bg);
-	color: var(--dsvis-main-fg);
+	background-color: var(--main-bg);
+	color: var(--main-fg);
 }
 
 .main-shell {
@@ -337,8 +337,8 @@ fieldset {
 }
 
 svg {
-	background-color: var(--dsvis-svg-bg);
-	border: 2px solid var(--dsvis-svg-border);
+	background-color: var(--svg-bg);
+	border: 2px solid var(--svg-border);
 	width: 100%;
 	max-width: 1000px;
 	font-size: 20px;
@@ -362,66 +362,66 @@ text {
 }
 
 text.status-report {
-	fill: var(--dsvis-status-fg);
+	fill: var(--status-fg);
 	font-size: 80%;
 }
 text.status-report.paused {
-	fill: var(--dsvis-status-paused);
+	fill: var(--status-paused);
 }
 text.status-report.running {
-	fill: var(--dsvis-status-running);
+	fill: var(--status-running);
 }
 
 text.title, text.message {
-	fill: var(--dsvis-title-fg);
+	fill: var(--title-fg);
 }
 text.title {
 	font-weight: bold;
 }
 
 text.printer {
-	fill: var(--dsvis-printer-fg);
+	fill: var(--printer-fg);
 }
 
 circle, rect, polygon {
-	stroke: var(--dsvis-shape-stroke);
-	fill: var(--dsvis-shape-fill);
+	stroke: var(--shape-stroke);
+	fill: var(--shape-fill);
 }
 
 
 
 .edge-table rect {
-	fill: var(--dsvis-edge-fill);
-	stroke: var(--dsvis-edge-stroke);
+	fill: var(--edge-fill);
+	stroke: var(--edge-stroke);
     stroke-width: 1;
 }
 
 path, line, polyline {
-	stroke: var(--dsvis-line-stroke);
+	stroke: var(--line-stroke);
     fill: none;
 }
 
 svg .filled {
 	stroke: none;
-	fill: var(--dsvis-filled);
+	fill: var(--filled);
 }
 
 svg .marked, svg .marked > * {
-	stroke: var(--dsvis-marked);
+	stroke: var(--marked);
 }
 
 svg .marked.filled, svg text.marked, svg .marked > .filled, svg .marked > text {
 	stroke: none;
-	fill: var(--dsvis-marked);
+	fill: var(--marked);
 }
 
 svg .highlight, svg .highlight > * {
-	stroke: var(--dsvis-highlight);
+	stroke: var(--highlight);
 }
 
 svg .highlight.filled, svg text.highlight, svg .highlight > .filled, svg .highlight > text {
 	stroke: none;
-	fill: var(--dsvis-highlight);
+	fill: var(--highlight);
 }
 
 svg .nofill {
@@ -429,13 +429,13 @@ svg .nofill {
 }
 
 svg .highlight-circle {
-	stroke: var(--dsvis-highlight);
+	stroke: var(--highlight);
 	fill: none;
 }
 
 g text {
 	stroke: none;
-    fill: var(--dsvis-node-text);
+    fill: var(--node-text);
     text-anchor: middle;
 }
 
@@ -448,11 +448,11 @@ g.unfilled circle {
 }
 
 g.red circle {
-	fill: var(--dsvis-red-node);
+	fill: var(--red-node);
 }
 
 g.red.black circle {
-	fill: var(--dsvis-red-black-node);
+	fill: var(--red-black-node);
 }
 
 text.arrayindex > tspan {
@@ -460,12 +460,12 @@ text.arrayindex > tspan {
 }
 
 rect.background.disabled {
-	fill: var(--dsvis-disabled-fill);
+	fill: var(--disabled-fill);
 }
 
 svg.shownullnodes .nullnode:not(.invisible) {
-	fill: var(--dsvis-nullnode-fill);
-	stroke: var(--dsvis-nullnode-fill);
+	fill: var(--nullnode-fill);
+	stroke: var(--nullnode-fill);
 }
 
 line.gridline, svg .invisible, svg .nullnode {
@@ -478,7 +478,7 @@ line.gridline {
 }
 
 svg.debug line.gridline, svg.debug .invisible, svg.debug .nullnode {
-	stroke: var(--dsvis-gridline-debug);
+	stroke: var(--gridline-debug);
 }
 
 /*PseudoCode*/
@@ -494,12 +494,12 @@ svg.debug line.gridline, svg.debug .invisible, svg.debug .nullnode {
 
 /*Highlights*/
 svg .highlightblue, svg .highlightblue > * {
-    stroke: var(--dsvis-highlight-blue);
+    stroke: var(--highlight-blue);
 }
 
 svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled, svg .highlightblue > text {
 	stroke: none;
-	fill: var(--dsvis-highlight-blue);
+	fill: var(--highlight-blue);
 }
 
 
@@ -513,11 +513,11 @@ svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled,
 	max-width: 1000px;
 	margin-top: -2px;
 	padding: 0.5rem 0.75rem;
-	border: 2px solid var(--dsvis-svg-border);
+	border: 2px solid var(--svg-border);
 	border-top: 0;
 	border-radius: 0 0 0.375rem 0.375rem;
-	background-color: var(--dsvis-header-bg);
-	color: var(--dsvis-header-fg);
+	background-color: var(--header-bg);
+	color: var(--header-fg);
 }
 
 .canvas-controls-attached label {
@@ -529,11 +529,11 @@ svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled,
 	max-width: 1000px;
 	margin-bottom: -2px;
 	padding: 0.5rem 0.75rem;
-	border: 2px solid var(--dsvis-svg-border);
+	border: 2px solid var(--svg-border);
 	border-bottom: 0;
 	border-radius: 0.375rem 0.375rem 0 0;
-	background-color: var(--dsvis-header-bg);
-	color: var(--dsvis-header-fg);
+	background-color: var(--header-bg);
+	color: var(--header-fg);
 }
 
 .canvas-controls-attached-top label {
@@ -559,24 +559,24 @@ svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled,
 }
 
 .media-controls .btn-outline-light {
-	--bs-btn-color: var(--dsvis-media-outline-fg);
-	--bs-btn-border-color: var(--dsvis-media-outline-border);
-	--bs-btn-hover-color: var(--dsvis-media-solid-fg);
-	--bs-btn-hover-bg: var(--dsvis-media-solid-bg);
-	--bs-btn-hover-border-color: var(--dsvis-media-solid-bg);
-	--bs-btn-active-color: var(--dsvis-media-solid-fg);
-	--bs-btn-active-bg: var(--dsvis-media-solid-bg);
-	--bs-btn-active-border-color: var(--dsvis-media-solid-bg);
+	--bs-btn-color: var(--media-outline-fg);
+	--bs-btn-border-color: var(--media-outline-border);
+	--bs-btn-hover-color: var(--media-solid-fg);
+	--bs-btn-hover-bg: var(--media-solid-bg);
+	--bs-btn-hover-border-color: var(--media-solid-bg);
+	--bs-btn-active-color: var(--media-solid-fg);
+	--bs-btn-active-bg: var(--media-solid-bg);
+	--bs-btn-active-border-color: var(--media-solid-bg);
 }
 
 .media-controls .btn-light {
-	--bs-btn-color: var(--dsvis-media-solid-fg);
-	--bs-btn-bg: var(--dsvis-media-solid-bg);
-	--bs-btn-border-color: var(--dsvis-media-solid-bg);
-	--bs-btn-hover-color: var(--dsvis-media-solid-fg);
-	--bs-btn-hover-bg: var(--dsvis-media-solid-bg);
-	--bs-btn-hover-border-color: var(--dsvis-media-solid-bg);
-	--bs-btn-active-color: var(--dsvis-media-solid-fg);
-	--bs-btn-active-bg: var(--dsvis-media-solid-bg);
-	--bs-btn-active-border-color: var(--dsvis-media-solid-bg);
+	--bs-btn-color: var(--media-solid-fg);
+	--bs-btn-bg: var(--media-solid-bg);
+	--bs-btn-border-color: var(--media-solid-bg);
+	--bs-btn-hover-color: var(--media-solid-fg);
+	--bs-btn-hover-bg: var(--media-solid-bg);
+	--bs-btn-hover-border-color: var(--media-solid-bg);
+	--bs-btn-active-color: var(--media-solid-fg);
+	--bs-btn-active-bg: var(--media-solid-bg);
+	--bs-btn-active-border-color: var(--media-solid-bg);
 }
