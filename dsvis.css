@@ -11,8 +11,8 @@
 	--surface-fg: #fff8dc;
 	--link-active: #ffffff;
 	--disabled-fg: #6c757d;
-	--btn-outline-fg: #1f2328;
-	--btn-outline-border: #1f2328;
+	--btn-outline-fg: #fff8dc;
+	--btn-outline-border: #fff8dc;
 	--btn-solid-bg: #70171f;
 	--btn-solid-fg: #fff8dc;
 	--media-outline-fg: #fff8dc;
@@ -69,7 +69,7 @@ body.theme-dark {
 	--link-active: #f7fafc;
 	--disabled-fg: #9aa4af;
 	--btn-outline-fg: #e8ebef;
-	--btn-outline-border: #e8ebef;
+    --btn-outline-border: #e8ebef;
 	--btn-solid-bg: #2b3440;
 	--btn-solid-fg: #e8ebef;
 	--media-outline-fg: #e8ebef;
@@ -245,6 +245,17 @@ body.theme-dark.theme-colorblind {
 	color: var(--link-active);
 }
 
+.btn-outline-light {
+    --bs-btn-color: var(--btn-outline-fg);
+    --bs-btn-border-color: var(--btn-outline-border);
+    --bs-btn-hover-color: var(--btn-solid-fg);
+    --bs-btn-hover-bg: var(--btn-solid-bg);
+    --bs-btn-hover-border-color: var(--btn-solid-bg);
+    --bs-btn-active-color: var(--btn-solid-fg);
+    --bs-btn-active-bg: var(--btn-solid-bg);
+    --bs-btn-active-border-color: var(--btn-solid-bg);
+}
+
 .btn-outline-dark {
 	--bs-btn-color: var(--btn-outline-fg);
 	--bs-btn-border-color: var(--btn-outline-border);
@@ -333,7 +344,31 @@ fieldset {
 
 *:disabled,
 *:disabled * {
-	color: var(--dsvis-disabled-fg);
+	color: var(--disabled-fg);
+}
+
+/* Gör att kontrollpanelerna matchar din CSS-fils färger */
+.algorithmControls, .generalControls {
+    background-color: var(--surface-bg);
+    color: var(--surface-fg);
+    border: 2px solid var(--svg-border) !important;
+}
+
+.algorithmControls {
+    border-bottom: none !important;
+    border-radius: 8px 8px 0 0;
+}
+
+.generalControls {
+    border-top: none !important;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Tar bort eventuella marginaler som skapar glipor mellan röd ram och paneler */
+svg {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0; /* Gör den rak så den passar mot panelerna */
 }
 
 svg {

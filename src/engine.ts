@@ -64,8 +64,6 @@ export class Engine implements PannableAndZoomable {
     debugger: Debugger;
     state: State;
     info: Info;
-    title: string = "Select an action from the menu above";
-    body: string = NBSP;
 
     timeline: Timeline;
     panAndZoomHelper: PanAndZoomHelper;
@@ -142,7 +140,10 @@ export class Engine implements PannableAndZoomable {
         
         this.info = new Info(this._containingSvg, this.$Svg.margin);
 
-        this.timeline = new Timeline()
+        this.timeline = new Timeline();
+        
+        // Set initial running state to true
+        this.generalControls.setRunning(true);
     }
     enableViewBoxPanning(): void {
         return this.panAndZoomHelper.enableViewBoxPanning();
@@ -174,7 +175,6 @@ export class Engine implements PannableAndZoomable {
             this.resetPromise
                 .then(() => this.resetAll())
                 .then(() => {
-                    this.generalControls.setRunning(true);
                     this.resetPromise = undefined;
                 });
         } else {
@@ -246,9 +246,8 @@ export class Engine implements PannableAndZoomable {
     }
 
     setIdleTitle(): void {
-        this.info.setTitle(this.title);
-        this.info.setBody(this.body);
-
+        this.info.setTitle("Select an action from the menu above");
+        this.info.setBody(NBSP);
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -528,7 +527,7 @@ export class Engine implements PannableAndZoomable {
     animate<T extends Element>(elem: T, animate = true) {
         if (this.state.isAnimating() && animate) {
             this.info.setStatus("running");
-            this.info.setStatus("paused", this.getAnimationSpeed());
+            //this.info.setStatus("paused", this.getAnimationSpeed());
             const elementRunner = elem.animate(this.getAnimationSpeed());
             this.timeline.schedule(elementRunner, 0, "now").play();
             return elementRunner;

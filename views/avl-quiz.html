@@ -8,37 +8,33 @@
 <body>
   <header class="site-header"></header>
 
-  <main class="main-shell d-flex align-items-center">
+  <main class="main-shell d-flex align-items-start">
     <section id="avlquizContainer" class="page-content mx-auto py-4 px-3 px-md-4 text-center">
       <h2 class="h5">Playground for AVL trees</h2>
 
       <fieldset class="algorithmControls canvas-controls-attached-top d-flex flex-wrap justify-content-start gap-2 text-start">
         <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
-          <label>Create:
-            <input class="insertField disableWhenRunning form-control form-control-sm w-auto d-inline-block" type="text" size="1" maxlength="4" />
-            <input class="createLeft disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Left child" />
-            <input class="createRight disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Right child" />
-          </label>
+          <label>Create:</label>
+          <input class="insertField disableWhenRunning form-control form-control-sm w-auto" type="text" size="1" maxlength="4" />
+          <input class="createLeft disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Left child" />
+          <input class="createRight disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Right child" />
         </span>
         <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
-          <label>Move to:
-            <input class="moveParent disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Parent" />
-            <input class="moveLeft disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Left child" />
-            <input class="moveRight disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Right child" />
-          </label>
+          <label>Move to:</label>
+          <input class="moveParent disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Parent" />
+          <input class="moveLeft disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Left child" />
+          <input class="moveRight disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Right child" />
         </span>
         <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
-          <label>Rotate:
-            <input class="rotateLeft disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Left" />
-            <input class="rotateRight disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Right" />
-          </label>
+          <label>Rotate:</label>
+          <input class="rotateLeft disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Left" />
+          <input class="rotateRight disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Right" />
         </span>
         <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
-          <label>Action:
-            <input class="markNode disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Mark node" />
-            <input class="copyToMark disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Copy to mark" />
-            <input class="deleteNode disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Delete leaf" />
-          </label>
+          <label>Action:</label>
+          <input class="markNode disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Mark node" />
+          <input class="copyToMark disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Copy to mark" />
+          <input class="deleteNode disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Delete leaf" />
         </span>
       </fieldset>
 
@@ -48,6 +44,7 @@
 
       <fieldset class="generalControls canvas-controls-attached d-flex flex-wrap justify-content-start gap-2 text-start">
 
+      
         <span class="formgroup media-controls d-inline-flex flex-wrap align-items-center gap-2">
           <button class="fastBackward btn btn-outline-light btn-sm media-btn" aria-label="Fast backward">⏮︎</button>
           <button class="stepBackward btn btn-outline-light btn-sm media-btn" aria-label="Step backward">⏪︎</button>
@@ -76,8 +73,11 @@
             </select>
           </label>
         </span>
-        <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
+        <span class="formgroup">
           <input class="restartQuiz disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Restart" />
+        </span>
+        <span class="formgroup">
+          <button type="button" id="resetPanAndZoomButton" class="btn btn-outline-light btn-sm">Reset pan and zoom</button>
         </span>
       </fieldset>
     </section>

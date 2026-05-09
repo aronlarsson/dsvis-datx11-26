@@ -9,7 +9,7 @@
   <header class="site-header"></header>
 
   <main class="main-shell d-flex align-items-start">
-    <section id="sortingContainer" class="page-content mx-auto py-4 px-3 px-md-4 text-center">
+  <section id="sortingContainer" class="page-content mx-auto py-4 px-3 px-md-4 text-center">
 
     <label for="algorithmSelector" class="form-label fw-semibold d-block text-start">Choose a sorting algorithm:</label>
     <div class="selectorWrapper mx-auto mb-3">
@@ -26,10 +26,10 @@
       </select>
     </div>
 
-    <fieldset class="algorithmControls">
-      <span class="formgroup">
-        <label for="presetSizeSelect">Preset array sizes:</label>
-        <select id="presetSizeSelect" class="presetSizeSelect disableWhenRunning">
+    <fieldset class="algorithmControls canvas-controls-attached-top d-flex flex-wrap justify-content-start gap-2 text-start">
+      <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
+        <label for="presetSizeSelect">Array size:</label>
+        <select id="presetSizeSelect" class="presetSizeSelect disableWhenRunning form-select form-select-sm w-auto">
           <option value="none" disabled>-- Select size --</option>
           <option value="tiny">Tiny (10)</option>
           <option value="small">Small (20)</option>
@@ -39,19 +39,20 @@
           <option value="empty">Empty</option>
         </select>
       </span>
-      <span class="formgroup">
-        <label for="insertField">Insert values:</label>
-        <input id="insertField" class="insertField disableWhenRunning" type="text" size="10" maxlength="20" />
-        <input id="insertSubmit" class="insertSubmit disableWhenRunning" type="submit" value="Insert" />
+
+      <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
+        <label for="insertField">Insert:</label>
+        <input id="insertField" class="insertField disableWhenRunning form-control form-control-sm w-auto d-inline-block" type="text" size="10" />
+        <input id="insertSubmit" class="insertSubmit disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Insert" />
       </span>
-      <span class="formgroup">
-        <input id="sortSubmit" class="sortSubmit disableWhenRunning" type="submit" value="Sort" />
+
+      <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
+        <input id="sortSubmit" class="sortSubmit disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Sort" />
+        <input id="clearSubmit" class="clearSubmit disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Clear" />
       </span>
-      <span class="formgroup">
-        <input id="clearSubmit" class="clearSubmit disableWhenRunning" type="submit" value="Clear" />
-      </span>
-      <span class="formgroup">
-        <select id="shuffleSelect" class="shuffle disableWhenRunning">
+
+      <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
+        <select id="shuffleSelect" class="shuffle disableWhenRunning form-select form-select-sm w-auto">
           <option value="" selected>Shuffle Array</option>
           <option value="shuffleRandom">Random</option>
           <option value="shuffleReversed">Reversed</option>
@@ -74,6 +75,7 @@
         <button class="stepForward btn btn-outline-light btn-sm media-btn" aria-label="Step forward">⏩︎</button>
         <button class="fastForward btn btn-outline-light btn-sm media-btn" aria-label="Fast forward">⏭︎</button>
       </span>
+
       <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
         <label>Speed:
           <select class="animationSpeed form-select form-select-sm w-auto d-inline-block">
@@ -84,9 +86,10 @@
           </select>
         </label>
       </span>
-      <span class="formgroup">
+
+      <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
         <label>Staple size:
-          <select class="objectSize"> <!-- TODO: Rename to match purpose -->
+          <select class="objectSize form-select form-select-sm w-auto d-inline-block">
             <option value="tiny">Tiny</option>
             <option value="small">Small</option>
             <option value="medium">Medium</option>
@@ -95,12 +98,13 @@
           </select>
         </label>
       </span>
+
       <span class="formgroup">
-        <button type="button" id="resetPanAndZoomButton">Reset pan and zoom</button>
+        <button type="button" id="resetPanAndZoomButton" class="btn btn-outline-light btn-sm">Reset pan & zoom</button>
       </span>
     </fieldset>
   </section>
-  </main>
+</main>
 
   <footer class="site-footer py-3">
     <div class="container">
