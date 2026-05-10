@@ -190,9 +190,9 @@ export function initialiseEngine<T extends Engine = Engine>(
             .split(",")
             .map(val => parseInt(val.trim()))
             .filter(val => !isNaN(val));
-    } else {
-        // Use default initial values
-        // initialValues = [32, 83, 22, 15, 8, 12, 43, 54, 23, 34, 76, 87, 32];
+    // } else {
+    //     // Use default initial values
+    //     // initialValues = [32, 83, 22, 15, 8, 12, 43, 54, 23, 34, 76, 87, 32];
     }
     
     // Call initialise with parameters if it's a Sorter, otherwise without
