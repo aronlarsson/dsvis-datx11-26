@@ -1,162 +1,391 @@
 @charset "utf-8";
+@import "bootstrap/dist/css/bootstrap.min.css";
 
-/* A mixture of the following two CSS resets:
-   - Josh Comeau: https://www.joshwcomeau.com/css/custom-css-reset/
-   - Andy Bell: https://piccalil.li/blog/a-more-modern-css-reset/
-*/
+:root {
+	--page-bg: #70171f;
+	--main-bg: #fff8dc;
+	--main-fg: #1f2328;
+	--header-bg: #70171f;
+	--header-fg: #fff8dc;
+	--surface-bg: #70171f;
+	--surface-fg: #fff8dc;
+	--link-active: #ffffff;
+	--disabled-fg: #6c757d;
+	--btn-outline-fg: #fff8dc;
+	--btn-outline-border: #fff8dc;
+	--btn-solid-bg: #70171f;
+	--btn-solid-fg: #fff8dc;
+	--media-outline-fg: #fff8dc;
+	--media-outline-border: #fff8dc;
+	--media-solid-bg: #fff8dc;
+	--media-solid-fg: #70171f;
+	--field-bg: #ffffff;
+	--field-fg: #1f2328;
+	--field-border: #5c6670;
+	--field-border-focus: #1f2328;
+	--field-focus-ring: #1f232840;
+	--svg-bg: #ffffff;
+	--svg-border: #70171f;
+	--status-fg: #808080;
+	--status-paused: #a52a2a;
+	--status-running: #008000;
+	--title-fg: #a52a2a;
+	--printer-fg: #0000ff;
+	--shape-stroke: #000000;
+	--shape-fill: #fff8dc;
+	--edge-fill: #ffffff;
+	--edge-stroke: #000000;
+	--line-stroke: #000000;
+	--filled: #000000;
+	--marked: #008000;
+	--highlight: #cc0000;
+	--node-text: #000000;
+	--red-node: #ffc0cb;
+	--red-black-node: #d3d3d3;
+	--disabled-fill: #d3d3d3;
+	--nullnode-fill: #000000;
+	--gridline-debug: #d3d3d3;
+	--highlight-blue: #04d9ff;
+	--node-font-size: 100%;
+}
 
-*, *::before, *::after {
-	box-sizing: border-box;
-}
-* {
-	margin: 0;
-	padding: 0;
-}
-input, button, textarea, select {
-	font: inherit;
-}
 body {
-	line-height: 1.5;
-	-webkit-font-smoothing: antialiased;
-}
-h1, h2, h3, h4, button, input, label {
-  	line-height: 1.1;
-}
-p, h1, h2, h3, h4, h5, h6 {
-	overflow-wrap: break-word;
-}
-img, picture, video, canvas, svg {
-	display: block;
-	max-width: 100%;
+	min-height: 100vh;
+	background-color: var(--page-bg);
+	color: var(--main-fg);
+	--bs-body-color: var(--main-fg);
+	--bs-body-bg: var(--main-bg);
+	padding-top: 56px;
 }
 
-/* End CSS reset */
+body.theme-dark {
+	--page-bg: #111418;
+	--main-bg: #1c2026;
+	--main-fg: #e8ebef;
+	--header-bg: #0d0f12;
+	--header-fg: #e8ebef;
+	--surface-bg: #0d0f12;
+	--surface-fg: #e8ebef;
+	--link-active: #f7fafc;
+	--disabled-fg: #9aa4af;
+	--btn-outline-fg: #e8ebef;
+    --btn-outline-border: #e8ebef;
+	--btn-solid-bg: #2b3440;
+	--btn-solid-fg: #e8ebef;
+	--media-outline-fg: #e8ebef;
+	--media-outline-border: #e8ebef;
+	--media-solid-bg: #e8ebef;
+	--media-solid-fg: #111418;
+	--field-bg: #1a212b;
+	--field-fg: #e8ebef;
+	--field-border: #9aa4af;
+	--field-border-focus: #e8ebef;
+	--field-focus-ring: #e8ebef40;
+	--svg-bg: #232933;
+	--svg-border: #e8ebef;
+	--status-fg: #b0bac5;
+	--status-paused: #ffb4a2;
+	--status-running: #84e296;
+	--title-fg: #ffb4a2;
+	--printer-fg: #9ec5ff;
+	--shape-stroke: #e8ebef;
+	--shape-fill: #2f3642;
+	--edge-fill: #2f3642;
+	--edge-stroke: #e8ebef;
+	--line-stroke: #e8ebef;
+	--filled: #e8ebef;
+	--marked: #84e296;
+	--highlight: #ff8a80;
+	--node-text: #e8ebef;
+	--red-node: #b56576;
+	--red-black-node: #8d99ae;
+	--disabled-fill: #6c757d;
+	--nullnode-fill: #e8ebef;
+	--gridline-debug: #6c757d;
+	--highlight-blue: #7bdff2;
+}
 
-body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 100%;
-	background-color: maroon;
+body.theme-colorblind {
+	--page-bg: #0f2d4f;
+	--main-bg: #f4f7fb;
+	--main-fg: #102a43;
+	--header-bg: #0f2d4f;
+	--header-fg: #f4f7fb;
+	--surface-bg: #0f2d4f;
+	--surface-fg: #f4f7fb;
+	--link-active: #ffd166;
+	--disabled-fg: #486581;
+	--btn-outline-fg: #f4f7fb;
+	--btn-outline-border: #f4f7fb;
+	--btn-solid-bg: #0f2d4f;
+	--btn-solid-fg: #f4f7fb;
+	--media-outline-fg: #f4f7fb;
+	--media-outline-border: #f4f7fb;
+	--media-solid-bg: #ffd166;
+	--media-solid-fg: #102a43;
+	--field-bg: #ffffff;
+	--field-fg: #102a43;
+	--field-border: #334e68;
+	--field-border-focus: #102a43;
+	--field-focus-ring: #102a4340;
+	--svg-bg: #ffffff;
+	--svg-border: #0f2d4f;
+	--status-fg: #486581;
+	--status-paused: #d97706;
+	--status-running: #0f766e;
+	--title-fg: #b45309;
+	--printer-fg: #1d4ed8;
+	--shape-stroke: #102a43;
+	--shape-fill: #fff8dc;
+	--edge-fill: #ffffff;
+	--edge-stroke: #102a43;
+	--line-stroke: #102a43;
+	--filled: #102a43;
+	--marked: #0f766e;
+	--highlight: #b91c1c;
+	--node-text: #102a43;
+	--red-node: #ffc0cb;
+	--red-black-node: #d3d3d3;
+	--disabled-fill: #d3d3d3;
+	--nullnode-fill: #102a43;
+	--gridline-debug: #9fb3c8;
+	--highlight-blue: #2563eb;
+}
+
+body.theme-dark.theme-colorblind {
+	--page-bg: #111418;
+	--main-bg: #1c2026;
+	--main-fg: #e8ebef;
+	--header-bg: #0d0f12;
+	--header-fg: #e8ebef;
+	--surface-bg: #0d0f12;
+	--surface-fg: #e8ebef;
+	--link-active: #ffd166;
+	--disabled-fg: #9aa4af;
+	--btn-outline-fg: #e8ebef;
+	--btn-outline-border: #e8ebef;
+	--btn-solid-bg: #2b3440;
+	--btn-solid-fg: #e8ebef;
+	--media-outline-fg: #e8ebef;
+	--media-outline-border: #e8ebef;
+	--media-solid-bg: #ffd166;
+	--media-solid-fg: #111418;
+	--field-bg: #1a212b;
+	--field-fg: #e8ebef;
+	--field-border: #9aa4af;
+	--field-border-focus: #ffd166;
+	--field-focus-ring: #ffd16640;
+	--svg-bg: #232933;
+	--svg-border: #e8ebef;
+	--status-fg: #b0bac5;
+	--status-paused: #ffd166;
+	--status-running: #57cc99;
+	--title-fg: #ffd166;
+	--printer-fg: #90cdf4;
+	--shape-stroke: #e8ebef;
+	--shape-fill: #2f3642;
+	--edge-fill: #2f3642;
+	--edge-stroke: #e8ebef;
+	--line-stroke: #e8ebef;
+	--filled: #e8ebef;
+	--marked: #57cc99;
+	--highlight: #ff8a80;
+	--node-text: #e8ebef;
+	--red-node: #b56576;
+	--red-black-node: #8d99ae;
+	--disabled-fill: #6c757d;
+	--nullnode-fill: #e8ebef;
+	--gridline-debug: #6c757d;
+	--highlight-blue: #90cdf4;
+}
+
+.site-header,
+.site-footer {
+	background-color: var(--header-bg);
+	color: var(--header-fg);
+}
+
+.site-header-title {
+	margin-bottom: 0;
+	text-align: center;
+}
+
+.dsvis-navbar,
+.dsvis-offcanvas {
+	background-color: var(--surface-bg);
+	color: var(--surface-fg);
+}
+
+.dsvis-offcanvas .nav-link,
+.dsvis-offcanvas .offcanvas-title {
+	color: var(--surface-fg);
+}
+
+.dsvis-offcanvas .list-group-item {
+	background-color: transparent;
+	border-color: var(--surface-fg);
+	color: var(--surface-fg);
+}
+
+.dsvis-offcanvas .list-group-item:hover,
+.dsvis-offcanvas .list-group-item:focus {
+	background-color: var(--surface-fg);
+	color: var(--surface-bg);
+}
+
+.dsvis-offcanvas .list-group-item.active {
+	background-color: var(--link-active);
+	border-color: var(--link-active);
+	color: var(--surface-bg);
+}
+
+.dsvis-offcanvas .nav-link.active,
+.dsvis-offcanvas .nav-link:hover,
+.dsvis-offcanvas .nav-link:focus {
+	color: var(--link-active);
+}
+
+.btn-outline-light {
+    --bs-btn-color: var(--btn-outline-fg);
+    --bs-btn-border-color: var(--btn-outline-border);
+    --bs-btn-hover-color: var(--btn-solid-fg);
+    --bs-btn-hover-bg: var(--btn-solid-bg);
+    --bs-btn-hover-border-color: var(--btn-solid-bg);
+    --bs-btn-active-color: var(--btn-solid-fg);
+    --bs-btn-active-bg: var(--btn-solid-bg);
+    --bs-btn-active-border-color: var(--btn-solid-bg);
+}
+
+.btn-outline-dark {
+	--bs-btn-color: var(--btn-outline-fg);
+	--bs-btn-border-color: var(--btn-outline-border);
+	--bs-btn-hover-color: var(--btn-solid-fg);
+	--bs-btn-hover-bg: var(--btn-solid-bg);
+	--bs-btn-hover-border-color: var(--btn-solid-bg);
+	--bs-btn-active-color: var(--btn-solid-fg);
+	--bs-btn-active-bg: var(--btn-solid-bg);
+	--bs-btn-active-border-color: var(--btn-solid-bg);
+}
+
+.btn-dark {
+	--bs-btn-color: var(--btn-solid-fg);
+	--bs-btn-bg: var(--btn-solid-bg);
+	--bs-btn-border-color: var(--btn-solid-bg);
+	--bs-btn-hover-color: var(--btn-solid-fg);
+	--bs-btn-hover-bg: var(--btn-solid-bg);
+	--bs-btn-hover-border-color: var(--btn-solid-bg);
+	--bs-btn-active-color: var(--btn-solid-fg);
+	--bs-btn-active-bg: var(--btn-solid-bg);
+	--bs-btn-active-border-color: var(--btn-solid-bg);
+}
+
+.form-control,
+.form-select {
+	background-color: var(--field-bg);
+	border-color: var(--field-border);
+	color: var(--field-fg);
+}
+
+.form-control:focus,
+.form-select:focus {
+	background-color: var(--field-bg);
+	border-color: var(--field-border-focus);
+	box-shadow: 0 0 0 0.2rem var(--field-focus-ring);
+	color: var(--field-fg);
 }
 
 main {
-	background-color: lemonchiffon;
+	background-color: var(--main-bg);
+	color: var(--main-fg);
 }
 
-section, p, h1, h2, h3, h4, h5, h6, ul, ol, dl {
-	padding-bottom: 1rem;
+.main-shell {
+	min-height: calc(100vh - 56px - 4.5rem);
 }
 
-h1 { font-size: 1.6rem; }
-h2 { font-size: 1.2rem; }
-h3 { font-size: 1.1rem; }
-
-body > * {
-	padding-top: 1rem;
-	padding-left: 5%;
-	padding-right: 5%;
+.page-content {
+	width: min(100%, 1000px);
 }
 
-ul, ol {
-	padding-left: 2em;
+.page-link-grid .card-img-top {
+	height: 140px;
+	object-fit: contain;
+	padding: 1.5rem;
+	background-color: var(--bs-tertiary-bg);
 }
 
-header, footer {
-	color: lemonchiffon;
-	background-color: maroon;
+.page-link-grid .card {
+	border-color: var(--bs-border-color);
 }
 
-a {
+.page-content-with-bottom-panel {
+	min-height: calc(100vh - 56px - 4.5rem);
+	display: flex;
+	flex-direction: column;
+}
+
+.site-title-link {
 	color: inherit;
-}
-
-h1 a {
 	text-decoration: none;
 }
 
-
-.selectorWrapper > select {
-	appearance: none;
-	padding: 6px 12px;
-	background-color: inherit;
-}
-
-svg, .selectorWrapper > select {
-	border: solid 1px maroon;
-	border-radius: 5px;
-	width: 100%;
-}
-
 .selectorWrapper {
-	position: relative;
+	width: 100%;
 	max-width: 1000px;
 }
 
-.selectorWrapper::after {
-	content: "▼";
-	color: maroon;
-	font-size: 1rem;
-	top: 10px;
-	right: 10px;
-	position: absolute;
-}
-
-/*-----------------------------------------------------------------*/
-
-svg {
-    background-color: white;
-    border: 2px solid maroon;
-    width: 100%;
-	max-width: 1000px;
-}
-
-fieldset, form {
-    border: none;
-	display: inline-block;
+fieldset {
+	border: none;
 }
 
 .formgroup {
 	white-space: nowrap;
-	margin-right: 12px;
 }
 
-select, input, button {
-	margin: 3px 0;
-	padding: 3px 6px;
-	background-color: white;
-	border: solid 1px maroon;
-	border-radius: 5px;
+*:disabled,
+*:disabled * {
+	color: var(--disabled-fg);
 }
 
-input[type="checkbox"], input[type="radio"] {
-	width: 18px;
-	height: 18px;
-	margin-right: 0;
-	vertical-align: middle;
+/* Gör att kontrollpanelerna matchar din CSS-fils färger */
+.algorithmControls, .generalControls {
+    background-color: var(--surface-bg);
+    color: var(--surface-fg);
+    border: 2px solid var(--svg-border) !important;
 }
 
-select:hover:not(:disabled), input:hover:not(:disabled), button:hover:not(:disabled) {
-	cursor: pointer;
+.algorithmControls {
+    border-bottom: none !important;
+    border-radius: 8px 8px 0 0;
 }
 
-input:active:not(:disabled), button:active:not(:disabled), button.selected:not(:disabled) {
-	background-color: maroon;
-	color: white;
+.generalControls {
+    border-top: none !important;
+    border-radius: 0 0 8px 8px;
 }
 
-*:disabled, *:disabled * {
-	background: transparent;
-	color: maroon;
-}
-
-
-/*-----------------------------------------------------------------*/
-
-:root {
-	--node-font-size: 100%;
+/* Tar bort eventuella marginaler som skapar glipor mellan röd ram och paneler */
+svg {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0; /* Gör den rak så den passar mot panelerna */
 }
 
 svg {
+	background-color: var(--svg-bg);
+	border: 2px solid var(--svg-border);
+	width: 100%;
+	max-width: 1000px;
 	font-size: 20px;
+}
+
+svg,
+img,
+picture,
+video,
+canvas {
+	display: block;
+	max-width: 100%;
 }
 
 svg g {
@@ -168,30 +397,30 @@ text {
 }
 
 text.status-report {
-	fill: grey;
+	fill: var(--status-fg);
 	font-size: 80%;
 }
 text.status-report.paused {
-	fill: brown;
+	fill: var(--status-paused);
 }
 text.status-report.running {
-	fill: green;
+	fill: var(--status-running);
 }
 
 text.title, text.message {
-	fill: brown;
+	fill: var(--title-fg);
 }
 text.title {
 	font-weight: bold;
 }
 
 text.printer {
-	fill: blue;
+	fill: var(--printer-fg);
 }
 
 circle, rect, polygon {
-    stroke: black;
-    fill: lemonchiffon;
+	stroke: var(--shape-stroke);
+	fill: var(--shape-fill);
 }
 
 .row-normal {
@@ -201,8 +430,8 @@ circle, rect, polygon {
 }
 
 .edge-table .cell {
-    fill: #fca0a0;
-    stroke: #000;
+    fill: var(--edge-fill);
+	stroke: var(--edge-stroke);
     stroke-width: 1;
 }
 
@@ -213,32 +442,32 @@ circle, rect, polygon {
 }
 
 path, line, polyline {
-    stroke: black;
+	stroke: var(--line-stroke);
     fill: none;
 }
 
 svg .filled {
 	stroke: none;
-	fill: black;
+	fill: var(--filled);
 }
 
 svg .marked, svg .marked > * {
-    stroke: green;
+	stroke: var(--marked);
 }
 
 svg .marked.filled, svg text.marked, svg .marked > .filled, svg .marked > text {
 	stroke: none;
-	fill: green;
+	fill: var(--marked);
 }
 
 
 svg .highlight, svg .highlight > * {
-    stroke: #C00;
+	stroke: var(--highlight);
 }
 
 svg .highlight.filled, svg text.highlight, svg .highlight > .filled, svg .highlight > text {
 	stroke: none;
-	fill: #C00;
+	fill: var(--highlight);
 }
 
 svg .marked.highlight > * {
@@ -279,7 +508,7 @@ svg .nofill {
 }
 
 svg .highlight-circle {
-	stroke: #C00;
+	stroke: var(--highlight);
 	fill: none;
 }
 
@@ -295,7 +524,7 @@ svg .highlight-circle-blue {
 
 g text {
 	stroke: none;
-    fill: black;
+    fill: var(--node-text);
     text-anchor: middle;
 }
 
@@ -308,11 +537,11 @@ g.unfilled circle {
 }
 
 g.red circle {
-	fill: pink;
+	fill: var(--red-node);
 }
 
 g.red.black circle {
-	fill: lightgrey;
+	fill: var(--red-black-node);
 }
 
 text.arrayindex > tspan {
@@ -320,12 +549,12 @@ text.arrayindex > tspan {
 }
 
 rect.background.disabled {
-	fill: lightgray;
+	fill: var(--disabled-fill);
 }
 
 svg.shownullnodes .nullnode:not(.invisible) {
-	fill: black;
-	stroke: black;
+	fill: var(--nullnode-fill);
+	stroke: var(--nullnode-fill);
 }
 
 line.gridline, svg .invisible, svg .nullnode {
@@ -333,12 +562,18 @@ line.gridline, svg .invisible, svg .nullnode {
 	stroke: none;
 }
 
+/* Allow null-child markers to be highlighted even when nullnodes are hidden by default */
+svg .nullnode.highlight {
+	stroke: #C00;
+	fill: none;
+}
+
 line.gridline {
 	stroke-width: 1;
 }
 
 svg.debug line.gridline, svg.debug .invisible, svg.debug .nullnode {
-    stroke: lightgray;
+	stroke: var(--gridline-debug);
 }
 
 /*PseudoCode*/
@@ -354,14 +589,86 @@ svg.debug line.gridline, svg.debug .invisible, svg.debug .nullnode {
 
 /*Highlights*/
 svg .highlightblue, svg .highlightblue > * {
-    stroke: #04D9FF;
+    stroke: var(--highlight-blue);
 }
 
 svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled, svg .highlightblue > text {
 	stroke: none;
-	fill: #04D9FF;
+	fill: var(--highlight-blue);
 }
 
+/* Tree/binary node highlight classes */
+svg g.primaryHighlight > rect,
+svg g.primaryHighlight > circle {
+	stroke: #1d4ed8;
+	stroke-width: 3px;
+}
+
+svg g.secondaryHighlight > rect,
+svg g.secondaryHighlight > circle {
+	stroke: #16a34a;
+	stroke-width: 3px;
+}
+
+svg g.tertiaryHighlight > rect,
+svg g.tertiaryHighlight > circle {
+	stroke: #f59e0b;
+	stroke-width: 3px;
+}
+
+svg g.primaryHighlight > text {
+	fill: #1d4ed8;
+}
+
+svg g.secondaryHighlight > text {
+	fill: #16a34a;
+}
+
+svg g.tertiaryHighlight > text {
+	fill: #f59e0b;
+}
+
+/* If edge elements receive the highlight classes directly */
+svg path.primaryHighlight, svg line.primaryHighlight {
+	stroke: #1d4ed8;
+}
+
+svg path.secondaryHighlight, svg line.secondaryHighlight {
+	stroke: #16a34a;
+}
+
+svg path.tertiaryHighlight, svg line.tertiaryHighlight {
+	stroke: #f59e0b;
+}
+
+
+/* Sorting */
+
+.valueStaple > rect {
+	fill: rgb(58, 120, 255);
+	stroke: none;
+}
+
+.valueStaple.disabled {
+	opacity: 0.5;
+}
+
+.valueStaple.disabled > rect {
+	fill: lightgray;
+}
+
+/* TODO: Update highlighting to be consistent across components in the library, and use proper colors */
+svg .valueStaple.primaryHighlight > rect {
+	fill: blue;	
+}
+
+svg .valueStaple.successHighlight > rect {
+	fill: green
+}
+
+svg .valueStaple.infoHighlight > rect {
+	fill: orange;
+}
 
 /* For pannable canvas */
 svg * {

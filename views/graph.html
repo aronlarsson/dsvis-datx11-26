@@ -6,19 +6,13 @@
 </head>
 
 <body>
-  <header>
-    <h1>
-      <a href="index.html">
-        Visualizations of data structures and algorithms
-      </a>
-    </h1>
-  </header>
+  <header class="site-header"></header>
 
-  <main>
-    <section id="graphContainer">
-      <label for="algorithmSelector">Choose a graph algorithm:</label>
-      <h2 class="selectorWrapper">
-        <select name="algorithmSelector" class="algorithmSelector">
+  <main class="main-shell d-flex align-items-start">
+    <section id="graphContainer" class="page-content mx-auto py-4 px-3 px-md-4 text-center">
+      <label for="algorithmSelector" class="form-label fw-semibold d-block text-start">Choose a graph algorith:</label>
+      <div class="selectorWrapper mx-auto mb-3">
+        <select name="algorithmSelector" class="algorithmSelector form-select" id="algorithmSelector">
           <option disabled value="">
             &mdash; Please choose a graph algorithm &mdash;
           </option>
@@ -29,13 +23,12 @@
           <option value="Dijkstras_algorithm">Dijkstra's algorithm</option>
           <option value="Prim">Prim's MST</option>
         </select>
-      </h2>
+      </div>
       
-      <fieldset class="algorithmControls">
-        <span class="formgroup">
-          <select name="chooseGraphI" class="chooseGraphI disableWhenRunning">
-            <option disabled value="" selected>Choose a graph</option>
-            <hr />
+      <fieldset class="algorithmControls canvas-controls-attached-top d-flex flex-wrap justify-content-start gap-2 text-start">
+        <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
+          <select class="chooseGraphI disableWhenRunning form-select form-select-sm w-auto">
+            <option value="" selected>Choose a graph</option>
             <option value="Simple">Simple graph</option>
             <option value="Simple_2">Simple graph 2</option>
             <option value="Cyclic">Cyclic graph</option>
@@ -49,11 +42,13 @@
             <option value="Tree">Tree graph</option>
           </select>
           <input class="chosengraph disableWhenRunning" type="hidden">
-          <input class="runningAlgorithm disableWhenRunning" type="submit" value="Run algorithm" />
+          <label class="d-inline-flex align-items-center gap-2">Start:
+            <input class="runningAlgorithm disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Run algorithm" />
+          </label>
           <span class="formgroup">
-            <label>Pick starting node:
-            <input class="insertNode disableWhenRunning" type="text" size="1" maxlength="20" />
-              <input class="startNode disableWhenRunning" type="submit" value="Pick" />
+            <label class="d-inline-flex align-items-center gap-2">Pick starting node:
+            <input class="insertNode disableWhenRunning form-control form-control-sm w-auto" type="text" size="1" maxlength="20" />
+              <input class="startNode disableWhenRunning btn btn-outline-light btn-sm" type="submit" value="Pick" />
             </label>
           </span>
         </span>
@@ -65,17 +60,17 @@
         </svg>
       </div>
 
-      <fieldset class="generalControls">
-        <span class="formgroup">
-          <button class="fastBackward">&lt;&lt;</button>
-          <button class="stepBackward">&lt;</button>
-          <button class="toggleRunner">Run</button>
-          <button class="stepForward">&gt;</button>
-          <button class="fastForward">&gt;&gt;</button>
+      <fieldset class="generalControls canvas-controls-attached d-flex flex-wrap justify-content-start gap-2 text-start">
+        <span class="formgroup media-controls d-inline-flex flex-wrap align-items-center gap-2">
+          <button class="fastBackward btn btn-outline-light btn-sm media-btn" aria-label="Fast backward">⏮︎</button>
+          <button class="stepBackward btn btn-outline-light btn-sm media-btn" aria-label="Step backward">⏪︎</button>
+          <button class="toggleRunner btn btn-light btn-sm media-btn media-btn-run" aria-label="Run">Run</button>
+          <button class="stepForward btn btn-outline-light btn-sm media-btn" aria-label="Step forward">⏩︎</button>
+          <button class="fastForward btn btn-outline-light btn-sm media-btn" aria-label="Fast forward">⏭︎</button>
         </span>
-        <span class="formgroup">
+        <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
           <label>Speed:
-            <select class="animationSpeed">
+            <select class="animationSpeed form-select form-select-sm w-auto d-inline-block">
               <option value="1200">Slowest</option>
               <option value="700" selected>Slow</option>
               <option value="300">Fast</option>
@@ -83,9 +78,9 @@
             </select>
           </label>
         </span>
-        <span class="formgroup">
+        <span class="formgroup d-inline-flex flex-wrap align-items-center gap-2">
           <label>Node size:
-            <select class="objectSize">
+            <select class="objectSize form-select form-select-sm w-auto d-inline-block">
               <option value="12">Tiny</option>
               <option value="20">Small</option>
               <option value="28">Medium</option>
@@ -95,18 +90,20 @@
           </label>
         </span>
       <span class="formgroup">
-        <button type="button" id="resetPanningButton">Reset panning</button>
+        <button type="button" id="resetPanAndZoomButton" class="btn btn-outline-light btn-sm">Reset pan and zoom</button>
       </span>
       </fieldset>
     </section>
   </main>
 
-  <footer>
-    <p>
-      &copy;2024 <a href="https://github.com/heatherleaf">Peter Ljunglöf</a>,
-      open source code
-      <a href="https://github.com/ChalmersGU-data-structure-courses/dsvis">on GitHub</a>
-    </p>
+  <footer class="site-footer py-3">
+    <div class="container">
+      <p class="mb-0 text-center">
+        &copy;2024 <a href="https://github.com/heatherleaf">Peter Ljunglöf</a>,
+        open source code
+        <a href="https://github.com/ChalmersGU-data-structure-courses/dsvis">on GitHub</a>
+      </p>
+    </div>
   </footer>
 </body>
 

@@ -148,24 +148,25 @@ export default class PanAndZoomHelper implements PannableAndZoomable {
         steps: number,
         animate: boolean
     ): void {
-        const stepSize: number = 30;
-        let yChange: number;
-        if (direction === "in") {
-            yChange = -steps * stepSize;
-        } else if (direction === "out") {
-            yChange = steps * stepSize;
-        } else {
-            throw new Error(
-                `direction must be 'in' or 'out', was ${direction}`
-            );
-        }
-
         const {
             x: viewBoxX,
             y: viewBoxY,
             height: viewBoxHeight,
             width: viewBoxWidth,
         } = this.engine.Svg.viewbox();
+
+        const zoomFractionPerStep: number = 0.05;
+        let yChange: number;
+        if (direction === "in") {
+            yChange = -steps * zoomFractionPerStep * viewBoxHeight;
+        } else if (direction === "out") {
+            yChange = steps * zoomFractionPerStep * viewBoxHeight;
+        } else {
+            throw new Error(
+                `direction must be 'in' or 'out', was ${direction}`
+            );
+        }
+
         const height = Math.max(1, viewBoxHeight + yChange);
         const width = height * this.getViewBoxWToHAspectRatio();
 
@@ -204,7 +205,7 @@ export default class PanAndZoomHelper implements PannableAndZoomable {
         animate: boolean = false
     ) {
         if (animate) {
-            this.engine.Svg.animate(10).viewbox(x, y, width, height);
+            this.engine.Svg.animate(this.engine.getAnimationSpeed()).viewbox(x, y, width, height);
         } else {
             this.engine.Svg.viewbox(x, y, width, height);
         }
