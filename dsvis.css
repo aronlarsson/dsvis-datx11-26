@@ -115,8 +115,8 @@ body.theme-colorblind {
 	--surface-fg: #f4f7fb;
 	--link-active: #ffd166;
 	--disabled-fg: #486581;
-	--btn-outline-fg: #102a43;
-	--btn-outline-border: #102a43;
+	--btn-outline-fg: #f4f7fb;
+	--btn-outline-border: #f4f7fb;
 	--btn-solid-bg: #0f2d4f;
 	--btn-solid-fg: #f4f7fb;
 	--media-outline-fg: #f4f7fb;
