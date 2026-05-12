@@ -12,7 +12,7 @@ export class QuickSortAlgorithmControls extends SortingAlgorithmControls {
             "beforeend",
             `<span class="formgroup">
                 <label for="pivotMethodSelect">Pivot method</label>
-                <select name="pivotMethodSelect" id="pivotMethodSelect">
+                <select name="pivotMethodSelect" id="pivotMethodSelect" class="form-select form-select-sm w-auto">
                     <option value="middle">Middle</option>
                     <option value="first">First</option>
                     <option value="last">Last</option>
