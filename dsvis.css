@@ -58,7 +58,7 @@ body {
 	padding-top: 56px;
 }
 
-body.theme-dark {
+body.theme-dark,svg.theme-dark {
 	--page-bg: #111418;
 	--main-bg: #1c2026;
 	--main-fg: #e8ebef;
@@ -105,7 +105,7 @@ body.theme-dark {
 	--highlight-blue: #7bdff2;
 }
 
-body.theme-colorblind {
+body.theme-colorblind,svg.theme-colorblind {
 	--page-bg: #0f2d4f;
 	--main-bg: #f4f7fb;
 	--main-fg: #102a43;
@@ -152,7 +152,7 @@ body.theme-colorblind {
 	--highlight-blue: #2563eb;
 }
 
-body.theme-dark.theme-colorblind {
+body.theme-dark.theme-colorblind, svg.theme-dark.theme-colorblind {
 	--page-bg: #111418;
 	--main-bg: #1c2026;
 	--main-fg: #e8ebef;
@@ -198,6 +198,8 @@ body.theme-dark.theme-colorblind {
 	--gridline-debug: #6c757d;
 	--highlight-blue: #90cdf4;
 }
+
+
 
 .site-header,
 .site-footer {
@@ -476,7 +478,7 @@ svg .marked.highlight > * {
 }
 
 svg .highlight-blue, svg .highlight-blue > * {
-    stroke: blue;
+    stroke: var(--highlight-blue);
 }
 
 svg .highlight-blue.filled, svg text.highlight-blue, svg .highlight-blue > .filled, svg .highlight-blue > text {

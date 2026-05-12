@@ -35,7 +35,22 @@ export abstract class BaseGraph extends Engine implements Graph {
 
         this.generalControls = new EngineGeneralControls(this.container, this)
         this.edgeTable = this.Svg.group()
+       
+        window.addEventListener("themeChanged", (event: Event) => {
+            const customEvent = event as CustomEvent;
+
+            const dark = customEvent.detail.dark;
+            const colorblind = customEvent.detail.colorblind;
+
+            console.log("Theme changed:", dark, colorblind);
+
+            // update visualization colors
+            // redraw canvas
+            // rerender graphs
+        });
+        
     }
+
 
 
     /**

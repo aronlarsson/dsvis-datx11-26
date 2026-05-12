@@ -236,4 +236,5 @@ async updateTable(
 
     this.Svg.add(this.edgeTable)
 }
+
 }
