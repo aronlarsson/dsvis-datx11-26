@@ -23,7 +23,7 @@
 	--canvas-bg: #ffffff;
 	--canvas-border: #70171f;
 	--canvas-status: #008000;
-	--canvas-title: #a52a2a;
+	--canvas-title: #ffffff /*#a52a2a;*/;
 	--canvas-print-text: #0000ff;
 	--canvas-node-outline: #000000;
 	--canvas-shape-fill: #fff8dc;
@@ -302,10 +302,17 @@ main {
     border-color: var(--bs-border-color);
 }
 
-.page-link-grid .card-img-top {
+/* .page-link-grid .card-img-top {
     height: 140px;
     object-fit: contain;
     padding: 1.5rem;
+    background-color: var(--bs-tertiary-bg);
+} */
+ .page-link-grid .card-img-top {
+    height: 180px;
+    width: 100%;
+    object-fit: contain;  /* Keeps full image, adds white space */
+    padding: 0.75rem;  /* Reduced padding */
     background-color: var(--bs-tertiary-bg);
 }
 
