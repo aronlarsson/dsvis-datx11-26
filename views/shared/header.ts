@@ -79,17 +79,14 @@ function setupThemeToggles(): void {
         localStorage.setItem(THEME_DARK_KEY, darkSwitch.checked ? "1" : "0");
         applyThemes(darkSwitch, colorblindSwitch);
 
-        notifyThemeChanged(darkSwitch.checked,colorblindSwitch.checked);
+        
     });
 
     colorblindSwitch.addEventListener("change", () => {
         localStorage.setItem(THEME_COLORBLIND_KEY, colorblindSwitch.checked ? "1" : "0");
         applyThemes(darkSwitch, colorblindSwitch);
 
-        notifyThemeChanged(
-        darkSwitch.checked,
-        colorblindSwitch.checked
-    );
+        
     });
 }
 
@@ -103,15 +100,5 @@ function bootstrapSharedHeader(): void {
     setupThemeToggles();
 }
 
-function notifyThemeChanged(dark: boolean, colorblind: boolean): void {
-    window.dispatchEvent(
-        new CustomEvent("themeChanged", {
-            detail: {
-                dark,
-                colorblind
-            }
-        })
-    );
-}
 
 bootstrapSharedHeader();
