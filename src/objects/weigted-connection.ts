@@ -132,18 +132,20 @@ export class WeightedConnection<T extends GraphNode | BTreeNode | LinkedNode> ex
             [offx, offy] = this._offset()
         }
 
-        this.$textObj.font({ size: 25*this.$end.getSize()/40 })
+        const size = this.$end.getSize()
+
+        this.$textObj.font({ size: 25*size/40 })
         if (animationDuration > 0) {
             this.$textObj.animate(animationDuration)
                          .center(
-                             (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*10,
-                             (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*10
+                             (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*size/5,
+                             (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*size/5
                          )
                         }
         else {
             this.$textObj.center(
-                             (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*10,
-                             (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*10
+                             (x1 + x2)/2 + (y1 - y2) * this.$bend - offx*size/5,
+                             (y1 + y2)/2 + (x2 - x1) * this.$bend - offy*size/5
                          )
                         }
     }

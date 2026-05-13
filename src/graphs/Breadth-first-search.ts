@@ -120,7 +120,8 @@ export class Breadth extends BaseGraph implements Graph {
                 // animate pointer to node
                 pointer.setCenter(
                     startNode.cx(),
-                    startNode.cy()
+                    startNode.cy(),
+                    this.getAnimationSpeed()
                 )
 
                 await this.pause(`traversal.atNode`, startNode.getText())
