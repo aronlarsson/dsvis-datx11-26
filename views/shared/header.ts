@@ -3,7 +3,7 @@ const navItems = [
     { href: "collections.html", label: "Collections" },
     { href: "prioqueues.html", label: "Priority Queues" },
     { href: "sorting.html", label: "Sorting" },
-    { href: "avl-quiz.html", label: "AVL Quiz" },
+    // { href: "avl-quiz.html", label: "AVL Quiz" },
     { href: "graph.html", label: "Graph" },
 ];
 

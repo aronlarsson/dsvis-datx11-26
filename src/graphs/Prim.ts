@@ -71,7 +71,7 @@ export class Prim extends BaseGraph implements Graph {
     }
 
     /**
-     * Goes through the Prims algorithm and pauses to highlight
+     * Goes through Prims algorithm and pauses to highlight
      * relevant steps and edges
      */
     async primsAlg() {

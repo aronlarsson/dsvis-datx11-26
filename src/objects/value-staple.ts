@@ -29,7 +29,7 @@ export class ValueStaple extends G {
         this.$value = value;
         this.$text = this.text(String(value));
         
-        this.$rect = this.rect(stapleWidth, stapleHeight).fill('#32a852');
+        this.$rect = this.rect(stapleWidth, stapleHeight);
         this.setStapleHeight(stapleHeight);
         this.setStapleWidth(stapleWidth);
         this.addClass("valueStaple")

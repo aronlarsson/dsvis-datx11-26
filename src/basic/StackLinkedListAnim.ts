@@ -99,6 +99,7 @@ export class StackLinkedListAnim extends Engine implements Collection {
             await this.headNode.move(coords[0]-this.nodeDimensions[1], coords[1] - this.nodeDimensions[0]);
             this.headNode.opacity(0);
             const head = this.Svg.text("Head");
+            head.fill('var(--node-text)');
             head.font({size: this.getObjectSize() * 0.6});
             head.move(this.headNode.getCenterPos()[0], this.headNode.getCenterPos()[1] - this.getObjectSize() * 0.7);
         }

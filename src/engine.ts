@@ -64,6 +64,8 @@ export class Engine implements PannableAndZoomable {
     debugger: Debugger;
     state: State;
     info: Info;
+    title = "Select an action from the menu above";
+    body = NBSP;
 
     timeline: Timeline;
     panAndZoomHelper: PanAndZoomHelper;
@@ -246,8 +248,8 @@ export class Engine implements PannableAndZoomable {
     }
 
     setIdleTitle(): void {
-        this.info.setTitle("Select an action from the menu above");
-        this.info.setBody(NBSP);
+        this.info.setTitle(this.title);
+        this.info.setBody(this.body);
     }
 
     ///////////////////////////////////////////////////////////////////////////////
