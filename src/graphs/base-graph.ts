@@ -35,6 +35,8 @@ export abstract class BaseGraph extends Engine implements Graph {
 
         this.generalControls = new EngineGeneralControls(this.container, this)
         this.edgeTable = this.Svg.group()
+
+        
     }
 
 
@@ -264,7 +266,7 @@ export abstract class BaseGraph extends Engine implements Graph {
      * 
      * @param dir - Determines which way the edge is directed, to(our -> their)/from(their -> our)/both(our <-> their)
      * 
-     * @returns - Returns the graph
+     * @returns - The graph
      */
     link(
         ourNode: WeightedGraphNode, 
@@ -313,7 +315,7 @@ export abstract class BaseGraph extends Engine implements Graph {
      * Puts a node relative to another node a certain distance away 
      * (standard 125, not sure which unit)
      * 
-     * @param putNode - The node your are moving
+     * @param putNode - The node you are moving
      * 
      * @param relativNode - The node you are basing the moving of putNode around
      * 
@@ -369,7 +371,7 @@ export abstract class BaseGraph extends Engine implements Graph {
         this.link(A, C, 6, "from")
         
         this.putAtDeg(D, B, 45)
-        this.link(C, D, 30, "to")
+        this.link(C, D, 3, "to")
         this.link(B, D, 4, "to")
         this.link(A, D, 3, "from")
 
@@ -385,7 +387,7 @@ export abstract class BaseGraph extends Engine implements Graph {
 
         this.putAtDeg(H, D, 0, 150)
         this.link(D, H, 7, "to")
-        this.link(H, C, 0, "from")
+        this.link(H, C, 1, "from")
 
         this.putAtDeg(I, D, 135, 80)
         this.link(I, D, 3, "from")
@@ -423,7 +425,7 @@ export abstract class BaseGraph extends Engine implements Graph {
         this.link(D, A, 9, "to")
 
         this.putAtDeg(E, A, 90)
-        this.link(E, A, 0, "to")
+        this.link(E, A, 8, "to")
         this.link(E, A, 1, "from")
 
         this.putAtDeg(F, A, 30)
@@ -583,11 +585,9 @@ export abstract class BaseGraph extends Engine implements Graph {
         this.putAtDeg(C, A, 0)
 
         this.link(D, B, 6, "to")
-        this.link(D, B, 3, "from")
         this.putAtDeg(D, B, 90)
 
         this.link(E, C, 5, "to")
-        this.link(E, C, 7, "from")
         this.link(E, D, 2, "both")
         this.putAtDeg(E, C, 90)
 

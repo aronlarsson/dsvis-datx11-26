@@ -538,12 +538,12 @@ export class FloydWarshall extends BaseGraph implements Graph {
     
             const edgeBack = edge.$end.$outgoing[edge.$start.getText()]
             // highlight the traversed edge
+            edge.setHighlightColor(true, highColor)
             if (edgeBack && edgeBack.$weight === edge.$weight)
                 // highlight the way back as well if the edge is undirected
                 edgeBack.setHighlightColor(true, highColor)
-            edge.setHighlightColor(true, highColor)
             
-            // animate pointer to next node
+           // animate pointer to next node
             pointer?.setCenter(
                 endNode.cx(),
                 endNode.cy(),

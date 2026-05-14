@@ -28,6 +28,7 @@ const config = {
         sorting: "./src/sorting.ts",
         "avl-quiz": "./src/quizzes/AVL-quiz.ts",
         graph: "./src/graph.ts",
+        index: "./src/card-animations.ts",
     },
     output: {
         path: path.resolve(__dirname, "public"),

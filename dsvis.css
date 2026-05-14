@@ -38,10 +38,43 @@
 	--canvas-array-fill: #d3d3d3;
 	--sorting-staple-primary: #3878ff;
 	--sorting-staple-secondary: #32a852;
+	--sorting-staple-marked: #ff55ff;
+	--sorting-staple-highlight: #ff6b6b;
 	--sorting-staple-disabled: #d3d3d3;
 
 	--gridline-debug: #d3d3d3;
 	--highlight-blue: #04d9ff;
+
+	/* Highlight colors */
+	--highlight-green: green; /*Sondre might change this to fit theme*/
+	--highlight-red: #C00;
+	--highlight-bright-green: rgb(0, 204, 0);
+	--highlight-bright-blue: rgb(0, 0, 204);
+	--highlight-primary: #1d4ed8;
+	--highlight-secondary: #16a34a;
+	--highlight-tertiary: #f59e0b;
+
+	/* Data visualization colors */
+	--row-normal-fill: white;
+	--row-normal-stroke: black;
+	--row-highlight-fill: rgb(247, 152, 152);
+	--row-highlight-stroke: red;
+
+	/* Card Animation Colors */
+	--card-avl-node: #0d6efd;
+	--card-avl-stroke: #343a40;
+	--card-heap-node: #28a745;
+	--card-heap-stroke: #343a40;
+	--card-sort-default: #3878ff;
+	--card-sort-active: #ff6b6b;
+	--card-sort-sorted: #32a852;
+	--card-graph-node-unvisited: #0d6efd;
+	--card-graph-node-visited: #28a745;
+	--card-graph-edge-unvisited: #ccc;
+	--card-graph-edge-visited: #999;
+	--card-graph-edge-highlighted: #ff6b6b;
+
+	--test: #09cdda;
 }
 
 body {
@@ -89,9 +122,42 @@ body.theme-dark {
 	--canvas-node-children: #e8ebef;
 	--sorting-staple-primary: #5a9dff;
 	--sorting-staple-secondary: #4ade80;
+	--sorting-staple-highlight: #ff8a80;
+	--sorting-staple-marked: #ff55ff;
 	--sorting-staple-disabled: #6c757d;
 	--gridline-debug: #6c757d;
 	--highlight-blue: #7bdff2;
+
+	/* Highlight colors */
+	--highlight-green: green; /*Sondre might change this to fit theme*/
+	--highlight-red: #ff8a80;
+	--highlight-bright-green: #57cc99;
+	--highlight-bright-blue: #5a9dff;
+	--highlight-primary: #5a9dff;
+	--highlight-secondary: #4ade80;
+	--highlight-tertiary: #ff8a80;
+
+	/* Data visualization colors */
+	--row-normal-fill: #1a212b;
+	--row-normal-stroke: #e8ebef;
+	--row-highlight-fill: #b56576;
+	--row-highlight-stroke: #ff8a80;
+
+	/* Card Animation Colors */
+	--card-avl-node: #5a9dff;
+	--card-avl-stroke: #e8ebef;
+	--card-heap-node: #4ade80;
+	--card-heap-stroke: #e8ebef;
+	--card-sort-default: #5a9dff;
+	--card-sort-active: #ff6b6b;
+	--card-sort-sorted: #4ade80;
+	--card-graph-node-unvisited: #5a9dff;
+	--card-graph-node-visited: #4ade80;
+	--card-graph-edge-unvisited: #555;
+	--card-graph-edge-visited: #888;
+	--card-graph-edge-highlighted: #ff8a80;
+
+	--test: #09cdda;
 }
 
 body.theme-colorblind {
@@ -128,11 +194,44 @@ body.theme-colorblind {
 	--canvas-red-black-tree-black-node: #d3d3d3;
 	--canvas-array-fill: #d3d3d3;
 	--canvas-node-children: #102a43;
-	--sorting-staple-primary: #2563eb;
-	--sorting-staple-secondary: #0f766e;
-	--sorting-staple-disabled: #d3d3d3;
+	--sorting-staple-primary: #0072b2;
+	--sorting-staple-secondary: #cc79a7;
+	--sorting-staple-marked: #f0e442;
+	--sorting-staple-highlight: #e69f00;
+	--sorting-staple-disabled: #999999;
 	--gridline-debug: #9fb3c8;
 	--highlight-blue: #2563eb;
+
+	/* Highlight colors */
+	--highlight-green: green; /*Sondre might change this to fit theme*/
+	--highlight-red: #b91c1c;
+	--highlight-bright-green: #0f766e;
+	--highlight-bright-blue: #2563eb;
+	--highlight-primary: #2563eb;
+	--highlight-secondary: #0f766e;
+	--highlight-tertiary: #e69f00;
+
+	/* Data visualization colors */
+	--row-normal-fill: #f4f7fb;
+	--row-normal-stroke: #102a43;
+	--row-highlight-fill: #fbbf24;
+	--row-highlight-stroke: #b91c1c;
+
+	/* Card Animation Colors */
+	--card-avl-node: #0072b2;
+	--card-avl-stroke: #102a43;
+	--card-heap-node: #0072b2;
+	--card-heap-stroke: #102a43;
+	--card-sort-default: #0072b2;
+	--card-sort-active: #e69f00;
+	--card-sort-sorted: #cc79a7;
+	--card-graph-node-unvisited: #56b4e9;
+	--card-graph-node-visited: #0072b2;
+	--card-graph-edge-unvisited: #d1d5db;
+	--card-graph-edge-visited: #cc79a7;
+	--card-graph-edge-highlighted: #000000;
+
+	--test: #09cdda;
 }
 
 body.theme-dark.theme-colorblind {
@@ -169,11 +268,44 @@ body.theme-dark.theme-colorblind {
 	--canvas-red-black-tree-black-node: #8d99ae;
 	--canvas-array-fill: #6c757d;
 	--canvas-node-children: #e8ebef;
-	--sorting-staple-primary: #5a9dff;
-	--sorting-staple-secondary: #57cc99;
-	--sorting-staple-disabled: #6c757d;
+	--sorting-staple-primary: #0072b2;
+	--sorting-staple-secondary: #cc79a7;
+	--sorting-staple-highlight: #e69f00; 
+	--sorting-staple-marked: #f0e442;
+	--sorting-staple-disabled: #999999;
 	--gridline-debug: #6c757d;
 	--highlight-blue: #90cdf4;
+
+	/* Highlight colors */
+	--highlight-green: green; /*Sondre might change this to fit theme*/
+	--highlight-red: #ff8a80;
+	--highlight-bright-green: #57cc99;
+	--highlight-bright-blue: #5a9dff;
+	--highlight-primary: #5a9dff;
+	--highlight-secondary: #57cc99;
+	--highlight-tertiary: #e69f00;
+
+	/* Data visualization colors */
+	--row-normal-fill: #1a212b;
+	--row-normal-stroke: #e8ebef;
+	--row-highlight-fill: #b56576;
+	--row-highlight-stroke: #ff8a80;
+
+	/* Card Animation Colors */
+	--card-avl-node: #0072b2;
+	--card-avl-stroke: #102a43;
+	--card-heap-node: #0072b2;
+	--card-heap-stroke: #102a43;
+	--card-sort-default: #0072b2;
+	--card-sort-active: #e69f00;
+	--card-sort-sorted: #cc79a7;
+	--card-graph-node-unvisited: #56b4e9;
+	--card-graph-node-visited: #0072b2;
+	--card-graph-edge-unvisited: #d1d5db;
+	--card-graph-edge-visited: #cc79a7;
+	--card-graph-edge-highlighted: #000000;
+
+	--test: #09cdda;
 }
 
 /* ===== HEADER / FOOTER / NAVIGATION ===== */
@@ -302,17 +434,26 @@ main {
     border-color: var(--bs-border-color);
 }
 
-/* .page-link-grid .card-img-top {
-    height: 140px;
-    object-fit: contain;
-    padding: 1.5rem;
-    background-color: var(--bs-tertiary-bg);
-} */
- .page-link-grid .card-img-top {
+body.theme-dark .card {
+    background-color: var(--canvas-bg);
+}
+
+body.theme-dark.theme-colorblind .card {
+    background-color: var(--canvas-bg);
+}
+
+.page-link-grid .card-img-top {
     height: 180px;
     width: 100%;
-    object-fit: contain;  /* Keeps full image, adds white space */
-    padding: 0.75rem;  /* Reduced padding */
+    object-fit: contain;
+    padding: 0;
+    background-color: var(--bs-tertiary-bg);
+}
+
+#avl-card-animation,
+#avl-card-animation svg {
+    height: 180px;
+    width: 100%;
     background-color: var(--bs-tertiary-bg);
 }
 
@@ -487,35 +628,38 @@ svg .highlight.filled, svg text.highlight, svg .highlight > .filled, svg .highli
 
 svg .marked.highlight > * {
     stroke:none;
-    fill:#C00
+    fill:var(--highlight-red)
 }
 
 svg .highlight-blue, svg .highlight-blue > * {
-    stroke: blue;
+    stroke: var(--highlight-bright-blue);
 }
 
 svg .highlight-blue.filled, svg text.highlight-blue, svg .highlight-blue > .filled, svg .highlight-blue > text {
     stroke: none;
-    fill: blue;
+    fill: var(--highlight-bright-blue);
 }
 
 svg .marked.highlight-blue > * {
     stroke:none;
-    fill:blue
+    fill:var(--highlight-bright-blue)
 }
 
 svg .highlight-green, svg .highlight-green > * {
-    stroke: green;
+    stroke: var(--highlight-bright-green);
+	fill: var(--highlight-green);
 }
 
 svg .highlight-green.filled, svg text.highlight-green, svg .highlight-green > .filled, svg .highlight-green > text {
     stroke: none;
-    fill: green;
+    fill: var(--highlight-bright-green);
+	fill: var(--highlight-green);
 }
 
 svg .marked.highlight-green > * {
     stroke:none;
-    fill:green
+    fill:var(--highlight-bright-green);
+	fill: var(--highlight-green);
 }
 
 svg .nofill {
@@ -529,12 +673,12 @@ svg .highlight-circle {
 }
 
 svg .highlight-circle-green {
-    stroke: rgb(0, 204, 0);
+    stroke: var(--highlight-bright-green);
     fill: none;
 }
 
 svg .highlight-circle-blue {
-    stroke: rgb(0, 0, 204);
+    stroke: var(--highlight-bright-blue);
     fill: none;
 }
 
@@ -552,57 +696,57 @@ svg .highlightblue.filled, svg text.highlightblue, svg .highlightblue > .filled,
 /* Tree/binary node highlight classes */
 svg g.primaryHighlight > rect,
 svg g.primaryHighlight > circle {
-    stroke: #1d4ed8;
+    stroke: var(--highlight-primary);
     stroke-width: 3px;
 }
 
 svg g.primaryHighlight > text {
-    fill: #1d4ed8;
+    fill: var(--highlight-primary);
 }
 
 svg path.primaryHighlight, svg line.primaryHighlight {
-    stroke: #1d4ed8;
+    stroke: var(--highlight-primary);
 }
 
 svg g.secondaryHighlight > rect,
 svg g.secondaryHighlight > circle {
-    stroke: #16a34a;
+    stroke: var(--highlight-secondary);
     stroke-width: 3px;
 }
 
 svg g.secondaryHighlight > text {
-    fill: #16a34a;
+    fill: var(--highlight-secondary);
 }
 
 svg path.secondaryHighlight, svg line.secondaryHighlight {
-    stroke: #16a34a;
+    stroke: var(--highlight-secondary);
 }
 
 svg g.tertiaryHighlight > rect,
 svg g.tertiaryHighlight > circle {
-    stroke: #f59e0b;
+    stroke: var(--highlight-tertiary);
     stroke-width: 3px;
 }
 
 svg g.tertiaryHighlight > text {
-    fill: #f59e0b;
+    fill: var(--highlight-tertiary);
 }
 
 svg path.tertiaryHighlight, svg line.tertiaryHighlight {
-    stroke: #f59e0b;
+    stroke: var(--highlight-tertiary);
 }
 
 /* ===== DATA VISUALIZATION ===== */
 .row-normal {
-    fill:white;
-    stroke:black;
+    fill:var(--row-normal-fill);
+    stroke:var(--row-normal-stroke);
     fill-opacity:0.3
 }
 
 .row-highlight {
-    fill:rgb(247, 152, 152);
+    fill:var(--row-highlight-fill);
     fill-opacity:0.3;
-    stroke: red;
+    stroke: var(--row-highlight-stroke);
 }
 
 .edge-table .cell {
@@ -626,15 +770,15 @@ svg path.tertiaryHighlight, svg line.tertiaryHighlight {
 }
 
 svg .valueStaple.primaryHighlight > rect {
-    fill: var(--canvas-highlight);	
+    fill: var(--sorting-staple-highlight);	
 }
 
 svg .valueStaple.successHighlight > rect {
-    fill: var(--canvas-quiz-marked);
+    fill: var(--sorting-staple-secondary);
 }
 
 svg .valueStaple.infoHighlight > rect {
-    fill: var(--canvas-title);
+    fill: var(--sorting-staple-marked);
 }
 
 /* ===== SPECIAL (GRIDLINE, NULL NODES, etc) ===== */
@@ -654,7 +798,7 @@ svg.shownullnodes .nullnode:not(.invisible) {
 
 /* Allow null-child markers to be highlighted even when nullnodes are hidden by default */
 svg .nullnode.highlight {
-    stroke: #C00;
+    stroke: var(--highlight-red);
     fill: none;
 }
 
