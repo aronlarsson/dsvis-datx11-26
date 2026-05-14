@@ -75,6 +75,8 @@
 	--card-graph-edge-highlighted: #ff6b6b;
 
 	--test: #09cdda;
+	--node-font-size: 100%;
+	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
 body {
@@ -86,7 +88,7 @@ body {
 	padding-top: 56px;
 }
 
-body.theme-dark {
+body.theme-dark,svg.theme-dark {
 	--page-bg: #111418;
 	--main-bg: #1c2026;
 	--main-text: #e8ebef;
@@ -158,9 +160,10 @@ body.theme-dark {
 	--card-graph-edge-highlighted: #ff8a80;
 
 	--test: #09cdda;
+	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
-body.theme-colorblind {
+body.theme-colorblind,svg.theme-colorblind {
 	--page-bg: #0f2d4f;
 	--main-bg: #f4f7fb;
 	--main-text: #102a43;
@@ -232,9 +235,11 @@ body.theme-colorblind {
 	--card-graph-edge-highlighted: #000000;
 
 	--test: #09cdda;
+
+	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
-body.theme-dark.theme-colorblind {
+body.theme-dark.theme-colorblind, svg.theme-dark.theme-colorblind {
 	--page-bg: #111418;
 	--main-bg: #1c2026;
 	--main-text: #e8ebef;
@@ -306,7 +311,11 @@ body.theme-dark.theme-colorblind {
 	--card-graph-edge-highlighted: #000000;
 
 	--test: #09cdda;
+
+	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
+
+
 
 /* ===== HEADER / FOOTER / NAVIGATION ===== */
 .site-header,
@@ -633,6 +642,7 @@ svg .marked.highlight > * {
 
 svg .highlight-blue, svg .highlight-blue > * {
     stroke: var(--highlight-bright-blue);
+    stroke: var(--highlight-blue);
 }
 
 svg .highlight-blue.filled, svg text.highlight-blue, svg .highlight-blue > .filled, svg .highlight-blue > text {
@@ -653,6 +663,11 @@ svg .highlight-green, svg .highlight-green > * {
 svg .highlight-green.filled, svg text.highlight-green, svg .highlight-green > .filled, svg .highlight-green > text {
     stroke: none;
     fill: var(--highlight-bright-green);
+    stroke: var(--highlight-green);
+}
+
+svg .highlight-green.filled, svg text.highlight-green, svg .highlight-green > .filled, svg .highlight-green > text {
+	stroke: none;
 	fill: var(--highlight-green);
 }
 
@@ -660,6 +675,8 @@ svg .marked.highlight-green > * {
     stroke:none;
     fill:var(--highlight-bright-green);
 	fill: var(--highlight-green);
+	stroke:none;
+	fill:var(--highlight-green);
 }
 
 svg .nofill {

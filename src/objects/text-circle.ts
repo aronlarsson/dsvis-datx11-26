@@ -26,7 +26,7 @@ export class TextCircle extends G {
     * @param enabled 
     */
 
-    setHighlightColor(enabled: boolean,cssClass?: string, ) {
+    setHighlightColor(enabled: boolean,cssClass?: string,theme?:string) {
     const highlightClasses = [
         'highlight',
         'highlight-blue',
@@ -38,6 +38,7 @@ export class TextCircle extends G {
     if (enabled && cssClass) {
         this.addClass(cssClass)
     }
+    
 
     
 }

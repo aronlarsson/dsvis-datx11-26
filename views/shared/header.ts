@@ -78,11 +78,15 @@ function setupThemeToggles(): void {
     darkSwitch.addEventListener("change", () => {
         localStorage.setItem(THEME_DARK_KEY, darkSwitch.checked ? "1" : "0");
         applyThemes(darkSwitch, colorblindSwitch);
+
+        
     });
 
     colorblindSwitch.addEventListener("change", () => {
         localStorage.setItem(THEME_COLORBLIND_KEY, colorblindSwitch.checked ? "1" : "0");
         applyThemes(darkSwitch, colorblindSwitch);
+
+        
     });
 }
 
@@ -95,5 +99,6 @@ function bootstrapSharedHeader(): void {
     header.innerHTML = headerMarkup(currentPage());
     setupThemeToggles();
 }
+
 
 bootstrapSharedHeader();

@@ -35,9 +35,9 @@ export abstract class BaseGraph extends Engine implements Graph {
 
         this.generalControls = new EngineGeneralControls(this.container, this)
         this.edgeTable = this.Svg.group()
-
         
     }
+
 
 
     /**

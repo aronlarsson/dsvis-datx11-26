@@ -52,6 +52,7 @@ export class Connection<T extends GraphNode | BTreeNode | LinkedNode> extends Pa
     }
 
     getBend(): number {
+        
         return this.$bend;
     }
 
