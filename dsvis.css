@@ -76,7 +76,6 @@
 
 	--test: #09cdda;
 	--node-font-size: 100%;
-	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
 body {
@@ -160,7 +159,6 @@ body.theme-dark,svg.theme-dark {
 	--card-graph-edge-highlighted: #ff8a80;
 
 	--test: #09cdda;
-	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
 body.theme-colorblind,svg.theme-colorblind {
@@ -183,20 +181,20 @@ body.theme-colorblind,svg.theme-colorblind {
 	--input-field-focus-ring: #102a4340;
 	--canvas-bg: #ffffff;
 	--canvas-border: #0f2d4f;
-	--canvas-status: #0f766e;
-	--canvas-title: #b45309;
-	--canvas-print-text: #1d4ed8;
-	--canvas-node-outline: #102a43;
-	--canvas-shape-fill: #fff8dc;
-	--canvas-edges: #102a43;
-	--canvas-edge-direction: #102a43;
-	--canvas-quiz-marked: #0f766e;
-	--canvas-highlight: #b91c1c;
-	--canvas-node-text: #102a43;
-	--canvas-red-black-tree-red-node: #ffc0cb;
-	--canvas-red-black-tree-black-node: #d3d3d3;
-	--canvas-array-fill: #d3d3d3;
-	--canvas-node-children: #102a43;
+	--canvas-status: #009E73;
+	--canvas-title: #0072B2;
+	--canvas-print-text: #0072B2;
+	--canvas-node-outline: #000000;
+	--canvas-shape-fill: #56B4E9;
+	--canvas-edges: #000000;
+	--canvas-edge-direction: #000000;
+	--canvas-quiz-marked: #009E73;
+	--canvas-highlight: #e69f00;
+	--canvas-node-text: #000000;
+	--canvas-red-black-tree-red-node: #cc79a7;
+	--canvas-red-black-tree-black-node: #0072B2;
+	--canvas-array-fill: #56B4E9;
+	--canvas-node-children: #000000;
 	--sorting-staple-primary: #0072b2;
 	--sorting-staple-secondary: #cc79a7;
 	--sorting-staple-marked: #f0e442;
@@ -206,37 +204,35 @@ body.theme-colorblind,svg.theme-colorblind {
 	--highlight-blue: #2563eb;
 
 	/* Highlight colors */
-	--highlight-green: green; /*Sondre might change this to fit theme*/
-	--highlight-red: #b91c1c;
-	--highlight-bright-green: #0f766e;
-	--highlight-bright-blue: #2563eb;
-	--highlight-primary: #2563eb;
-	--highlight-secondary: #0f766e;
-	--highlight-tertiary: #e69f00;
+	--highlight-green: #009E73;
+	--highlight-red: #D55E00;
+	--highlight-bright-green: #009E73;
+	--highlight-bright-blue: #56B4E9;
+	--highlight-primary: #0072B2;
+	--highlight-secondary: #009E73;
+	--highlight-tertiary: #E69F00;
 
 	/* Data visualization colors */
 	--row-normal-fill: #f4f7fb;
-	--row-normal-stroke: #102a43;
-	--row-highlight-fill: #fbbf24;
-	--row-highlight-stroke: #b91c1c;
+	--row-normal-stroke: #000000;
+	--row-highlight-fill: #D55E00;
+	--row-highlight-stroke: #D55E00;
 
 	/* Card Animation Colors */
-	--card-avl-node: #0072b2;
-	--card-avl-stroke: #102a43;
-	--card-heap-node: #0072b2;
-	--card-heap-stroke: #102a43;
-	--card-sort-default: #0072b2;
-	--card-sort-active: #e69f00;
-	--card-sort-sorted: #cc79a7;
-	--card-graph-node-unvisited: #56b4e9;
-	--card-graph-node-visited: #0072b2;
-	--card-graph-edge-unvisited: #d1d5db;
-	--card-graph-edge-visited: #cc79a7;
-	--card-graph-edge-highlighted: #000000;
+	--card-avl-node: #0072B2;
+	--card-avl-stroke: #000000;
+	--card-heap-node: #009E73;
+	--card-heap-stroke: #000000;
+	--card-sort-default: #0072B2;
+	--card-sort-active: #E69F00;
+	--card-sort-sorted: #009E73;
+	--card-graph-node-unvisited: #56B4E9;
+	--card-graph-node-visited: #009E73;
+	--card-graph-edge-unvisited: #D3D3D3;
+	--card-graph-edge-visited: #E69F00;
+	--card-graph-edge-highlighted: #D55E00;
 
 	--test: #09cdda;
-
-	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
 body.theme-dark.theme-colorblind, svg.theme-dark.theme-colorblind {
@@ -259,19 +255,19 @@ body.theme-dark.theme-colorblind, svg.theme-dark.theme-colorblind {
 	--input-field-focus-ring: #ffd16640;
 	--canvas-bg: #232933;
 	--canvas-border: #0d0f12;
-	--canvas-status: #57cc99;
-	--canvas-title: #ffd166;
-	--canvas-print-text: #90cdf4;
+	--canvas-status: #009E73;
+	--canvas-title: #56B4E9;
+	--canvas-print-text: #56B4E9;
 	--canvas-node-outline: #e8ebef;
-	--canvas-shape-fill: #2f3642;
+	--canvas-shape-fill: #0072B2;
 	--canvas-edges: #e8ebef;
 	--canvas-edge-direction: #e8ebef;
-	--canvas-quiz-marked: #57cc99;
-	--canvas-highlight: #ff8a80;
+	--canvas-quiz-marked: #009E73;
+	--canvas-highlight: #e69f00;
 	--canvas-node-text: #e8ebef;
-	--canvas-red-black-tree-red-node: #b56576;
-	--canvas-red-black-tree-black-node: #8d99ae;
-	--canvas-array-fill: #6c757d;
+	--canvas-red-black-tree-red-node: #cc79a7;
+	--canvas-red-black-tree-black-node: #56B4E9;
+	--canvas-array-fill: #56B4E9;
 	--canvas-node-children: #e8ebef;
 	--sorting-staple-primary: #0072b2;
 	--sorting-staple-secondary: #cc79a7;
@@ -282,37 +278,35 @@ body.theme-dark.theme-colorblind, svg.theme-dark.theme-colorblind {
 	--highlight-blue: #90cdf4;
 
 	/* Highlight colors */
-	--highlight-green: green; /*Sondre might change this to fit theme*/
-	--highlight-red: #ff8a80;
-	--highlight-bright-green: #57cc99;
-	--highlight-bright-blue: #5a9dff;
-	--highlight-primary: #5a9dff;
-	--highlight-secondary: #57cc99;
-	--highlight-tertiary: #e69f00;
+	--highlight-green: #009E73; /*Okabe-Ito: Bluish Green*/
+	--highlight-red: #D55E00;
+	--highlight-bright-green: #009E73;
+	--highlight-bright-blue: #56B4E9;
+	--highlight-primary: #0072B2;
+	--highlight-secondary: #009E73;
+	--highlight-tertiary: #E69F00;
 
 	/* Data visualization colors */
 	--row-normal-fill: #1a212b;
 	--row-normal-stroke: #e8ebef;
-	--row-highlight-fill: #b56576;
-	--row-highlight-stroke: #ff8a80;
+	--row-highlight-fill: #D55E00;
+	--row-highlight-stroke: #D55E00;
 
 	/* Card Animation Colors */
-	--card-avl-node: #0072b2;
-	--card-avl-stroke: #102a43;
-	--card-heap-node: #0072b2;
-	--card-heap-stroke: #102a43;
-	--card-sort-default: #0072b2;
-	--card-sort-active: #e69f00;
-	--card-sort-sorted: #cc79a7;
-	--card-graph-node-unvisited: #56b4e9;
-	--card-graph-node-visited: #0072b2;
-	--card-graph-edge-unvisited: #d1d5db;
-	--card-graph-edge-visited: #cc79a7;
-	--card-graph-edge-highlighted: #000000;
+	--card-avl-node: #0072B2;
+	--card-avl-stroke: #e8ebef;
+	--card-heap-node: #009E73;
+	--card-heap-stroke: #e8ebef;
+	--card-sort-default: #0072B2;
+	--card-sort-active: #E69F00;
+	--card-sort-sorted: #009E73;
+	--card-graph-node-unvisited: #56B4E9;
+	--card-graph-node-visited: #009E73;
+	--card-graph-edge-unvisited: #D3D3D3;
+	--card-graph-edge-visited: #E69F00;
+	--card-graph-edge-highlighted: #D55E00;
 
 	--test: #09cdda;
-
-	--highlight-green: green; /*Sondre might change this to fit theme*/
 }
 
 
@@ -586,7 +580,7 @@ text.arrayindex > tspan {
 /* ===== SVG SHAPES ===== */
 circle, rect, polygon {
     stroke: var(--canvas-node-outline);
-    fill: var(--canvas-shape-fill);
+    fill: var(--main-bg);
 }
 
 path, line, polyline {
@@ -831,4 +825,7 @@ svg.debug line.gridline, svg.debug .invisible, svg.debug .nullnode {
     display: inline-block;
     width: 15%;
     position: absolute;
+}
+#shuffleSelect option[value=""] {
+  display: none;
 }
