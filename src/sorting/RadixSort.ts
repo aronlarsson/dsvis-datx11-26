@@ -108,6 +108,9 @@ export class RadixSort extends BaseSorter implements Sorter {
             countArray.setIndexHighlight(i, false);
         }
 
+        const countArrayHeight = Number(countArray.height());
+        const countArrayCY = countArray.cy();
+
         // === PHASE 3: PLACEMENT ===
         await this.pause("sort.placementPhase");
 
@@ -116,10 +119,10 @@ export class RadixSort extends BaseSorter implements Sorter {
             new StapleArray(
                 Array(sortSize).fill(0),
                 this.STAPLE_MAX_HEIGHT,
-                this.STAPLE_WIDTH,
+                this.getObjectSize(),
                 99
             )
-        ).init(this.sortArray.cx(), countArray.cy() + Number(countArray.height()) + this.VERTICAL_SEPARATION);
+        ).init(this.sortArray.cx(), countArrayCY + countArrayHeight + this.VERTICAL_SEPARATION);
 
         // Place values right-to-left for stability
         for (let i = sortSize - 1; i >= 0; i--) {
@@ -133,7 +136,7 @@ export class RadixSort extends BaseSorter implements Sorter {
             const outputPosition = count[digit] - 1;
             output[outputPosition] = String(value);
             outputArray.setValue(outputPosition, Number(value));
-            outputArray.setStapleHighlight(outputPosition, "tertiary");
+            outputArray.setStapleHighlight(outputPosition, "info");
             
             await this.pause("sort.placingValue", String(value), digit.toString(), outputPosition.toString());
             
@@ -147,6 +150,7 @@ export class RadixSort extends BaseSorter implements Sorter {
         this.animate(outputArray)
             .cy(originalSortArrayCY);
         
+        // Wait for animation to complete before updating
         await this.pause(undefined);
 
         // Update main array with output values
@@ -154,7 +158,7 @@ export class RadixSort extends BaseSorter implements Sorter {
             this.sortArray.setValue(i, Number(output[i]!));
         }
 
-        // Clean up temporary arrays
+        // Remove temporary arrays from DOM
         countArray.remove();
         outputArray.remove();
 
