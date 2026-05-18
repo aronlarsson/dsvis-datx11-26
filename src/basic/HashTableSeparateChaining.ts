@@ -145,7 +145,7 @@ export class HashTableSeparateChaining extends Engine implements Collection {
             newArray.addLinkedNode(currentIndex, value);
             
             arrayLabel.remove();
-            
+
             newArray.setIndexHighlight(currentIndex, false);
 
             await this.pause(undefined);
@@ -207,15 +207,14 @@ export class HashTableSeparateChaining extends Engine implements Collection {
         this.hashTable.addLinkedNode(currentIndex, value);
         this.elementCounter++
         arrayLabel.remove();
-
+        
+        await this.pause(undefined);
 
         for (let i = 0; i < this.hashTable.$nodeArrays[currentIndex].length; i++){
             this.hashTable.$nodeArrays[currentIndex][i].children().forEach((child) => child.setHighlight(false));
         }
-        this.hashTable.setIndexHighlight(currentIndex, false);
 
-        
-        await this.pause(undefined);
+        this.hashTable.setIndexHighlight(currentIndex, false);  
 
     }
 
