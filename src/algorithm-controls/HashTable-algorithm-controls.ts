@@ -15,7 +15,7 @@ export class HashTableAlgorithmControl extends CollectionAlgorithmControl {
 
         this.algorithmControls.insertAdjacentHTML(
             "beforeend",
-            `<span class="formgroup"><label>
+            `<span class="formgroup d-inline-flex flex-wrap align-items-center gap-2"><label>
                 Hash Function:
                 <select id="hashFunction" class="HashFunctionSelector disableWhenRunning">
                 <option value="0">Java HashCode</option>
