@@ -89,7 +89,7 @@ export class WeightedConnection<T extends GraphNode | BTreeNode | LinkedNode> ex
 
         // Create the text object
         this.$textObj.text(this.$weight.toString())
-                     .font({ size: 20*this.$end.getSize()/40 })
+                     .font({ size: 25*this.$end.getSize()/40 })
                      .center(
                          (C.x1 + C.x2)/2 + (C.y1 - C.y2) * this.$bend - offx*10,
                          (C.y1 + C.y2)/2 + (C.x2 - C.x1) * this.$bend - offy*10
