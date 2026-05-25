@@ -65,7 +65,7 @@ Cypress.Commands.add("checkForAllAlgorithms", (check: () => void) => {
 
 Cypress.Commands.add("checkForAllPages", (check: () => void) => {
     cy.visit("/");
-    cy.get("ul")
+    cy.get(".row div.card")
         .find("a")
         .each((a) => {
             const anchorElement: HTMLElement = a.get(0);

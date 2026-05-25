@@ -4,7 +4,7 @@ describe("BST", () => {
     });
 
     it("Canvas doesn't contain any objects on load", () => {
-        cy.get("svg").first().children().not("text").should("have.length", 0);
+        cy.get("svg").children().not("text").not("svg").should("have.length", 0);
     });
 
     it("Inserting first character 'C' adds object with value C as root", () => {
@@ -53,9 +53,9 @@ describe("BST", () => {
         })
     })
 
-    it.only("Added characters have correct relative x position", () => {
+    it("Added characters have correct relative x position", () => {
         const charsToAdd = ["B", "H", "D", "C", "A", "F", "G"];
-        const charPositionMap: { [key: string]: number } = {};
+        const nodeMap: { [key: string]: { node: JQuery<HTMLElement>, right?: JQuery<HTMLElement>, left?: JQuery<HTMLElement>}} = {}
         cy.get("input.insertField")
             .type(charsToAdd.join(" "))
             .press(Cypress.Keyboard.Keys.ENTER);
@@ -65,22 +65,71 @@ describe("BST", () => {
                 for (let char of charsToAdd) {
                     cy.get("svg")
                         .first()
+                        .find("svg")
                         .contains(char, { matchCase: true })
                         .then((element) => {
-                            charPositionMap[char] = element.position().left;
+                            const { left, top } = element.position()
+                            const width = element.width()
+                            const height = element.height()
+                            const cX = Math.round((left + width! / 2) / 10) * 10;
+                            const cY = Math.round((top + height! / 2) / 10) * 10;
+                            const key = cX + ' ' + cY;
+                            nodeMap[key] = { node: element }
                         });
                 }
             })
             .then(() => {
-                for (let char1 of Object.keys(charPositionMap)) {
-                    for (let char2 of Object.keys(charPositionMap)) {
-                        if (char1 < char2) {
-                            expect(charPositionMap[char1]).to.be.lessThan(
-                                charPositionMap[char2]
-                            );
+
+                cy.get("svg")
+                    .first()
+                    .find("svg")
+                    .find("path")
+                    .not(".nullnode")
+                    .each((element) => {
+                        const { left: leftPos, top: topPos } = element.position()
+                        const width = element.width()
+                        const height = element.height()
+                        const left = Math.round((leftPos) / 10) * 10;
+                        const top = Math.round((topPos) / 10) * 10;
+                        const right = Math.round((leftPos + width!) / 10) * 10;
+                        const bottom = Math.round((topPos + height!) / 10) * 10;
+
+                        let key = left + ' ' + top;
+                        if (nodeMap[key]) {
+                            const childKey = right + " " + bottom;
+                            if (!nodeMap[childKey]) {
+                                throw new Error(
+                                    "End of arrow could not be mapped to a node"
+                                );
+                            }
+                            nodeMap[key].right = nodeMap[childKey].node;
+                        } else {
+                            key = right + " " + top;
+                            if (nodeMap[key]) {
+                                const childKey = left + " " + bottom;
+                                if (!nodeMap[childKey]) {
+                                    throw new Error(
+                                        "End of arrow could not be mapped to a node"
+                                    );
+                                }
+                                nodeMap[key].left = nodeMap[childKey].node;
+                            } else {
+                                throw new Error(
+                                    "Start of arrow could not be mapped to a node"
+                                );
+                            }
                         }
+                    })
+            })
+            .then(() => {
+                for (let key of Object.keys(nodeMap)) {
+                    if (nodeMap[key].left !== undefined) {
+                        expect(nodeMap[key].node.text() > nodeMap[key].left!.text()).to.be.true
+                    }
+                    if (nodeMap[key].right !== undefined) {
+                        expect(nodeMap[key].node.text() < nodeMap[key].right!.text()).to.be.true
                     }
                 }
-            });
+            })
     });
 });
