@@ -71,8 +71,8 @@ describe("BST", () => {
                             const { left, top } = element.position()
                             const width = element.width()
                             const height = element.height()
-                            const cX = Math.round((left + width! / 2) / 10) * 10;
-                            const cY = Math.round((top + height! / 2) / 10) * 10;
+                            const cX = roundedCoordinateValue(left + width! / 2)
+                            const cY = roundedCoordinateValue(top + height! / 2)
                             const key = cX + ' ' + cY;
                             nodeMap[key] = { node: element }
                         });
@@ -89,10 +89,10 @@ describe("BST", () => {
                         const { left: leftPos, top: topPos } = element.position()
                         const width = element.width()
                         const height = element.height()
-                        const left = Math.round((leftPos) / 10) * 10;
-                        const top = Math.round((topPos) / 10) * 10;
-                        const right = Math.round((leftPos + width!) / 10) * 10;
-                        const bottom = Math.round((topPos + height!) / 10) * 10;
+                        const left = roundedCoordinateValue(leftPos)
+                        const top = roundedCoordinateValue(topPos)
+                        const right = roundedCoordinateValue(leftPos + width!)
+                        const bottom = roundedCoordinateValue(topPos + height!)
 
                         let key = left + ' ' + top;
                         if (nodeMap[key]) {
@@ -133,3 +133,8 @@ describe("BST", () => {
             })
     });
 });
+
+// Function to round cooridinates so that connections are not missed due to rounding differences
+function roundedCoordinateValue(value: number): number {
+    return Math.round(value / 10) * 10;
+}
