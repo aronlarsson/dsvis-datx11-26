@@ -271,7 +271,7 @@ export class HashTableLinearProbing extends Engine implements Collection {
     async hash(value: string, arr: hashTable): Promise<number> {
         const hashingText = this.Svg.text(String(this.hashString(value))) // create the number that represents the hash value
         hashingText.font({size: this.getObjectSize() * 0.37});
-        hashingText.fill("#C00"); 
+        hashingText.addClass("highlight"); 
         hashingText.center(this.getNodeStart()[0], this.getNodeStart()[1]);
         this.animate(hashingText, !this.state.isResetting()).center(this.getNodeStart()[0], this.getNodeStart()[1] + this.getObjectSize() * 2);
 

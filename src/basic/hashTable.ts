@@ -309,18 +309,20 @@ export class hashTable extends G {
     /*** Highlights the value with inserted index*/
     setIndexHighlight(i: number, high: boolean, color: string = "#C00") {
         if (this.$backgrounds[i]) {
+
+            
             if (high) {
-                this.$backgrounds[i].css("stroke", color);
+                this.$backgrounds[i].addClass("highlight");
             } else {
-                this.$backgrounds[i].css("stroke", "");
+                this.$backgrounds[i].removeClass("highlight");
             }
         }
 
         if (this.$values[i]) {
             if (high) {
-                this.$values[i].css("fill", color);
+                this.$values[i].addClass("highlight");
             } else {
-                this.$values[i].css("fill", "");
+                this.$values[i].removeClass("highlight");
             }
         }
 
