@@ -100,7 +100,7 @@ export class QuickSort extends BaseSorter implements Sorter {
         )
             .dy(-1)
             // @ts-ignore: Wrong typing from library, incorrectly requires camelCase attribute names
-            .css({ stroke: "orange", "stroke-width": 2 });
+            .css({ stroke: "var(--sorting-staple-marked)", "stroke-width": 2 });
 
 
         // Swap pivot with the first value of the range and update index
