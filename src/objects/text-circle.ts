@@ -8,7 +8,7 @@ export class TextCircle extends G {
     constructor(text: string, size: number, strokeWidth: number) {
         super();
         this.$circle = this.circle(size).stroke({ width: strokeWidth });
-        this.$text = this.text(text);
+        this.$text = this.text(text).font({ size: size * 0.6});
     }
 
     init(x: number, y: number): this {
